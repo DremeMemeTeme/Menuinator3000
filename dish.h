@@ -16,7 +16,7 @@ public:
 
 	//getters
 	std::string getName();
-	double getPrice();
+	virtual double getPrice();
 	std::string getAllergens();
 
 	//no setters because won't be using the default deconstructor in the main program
