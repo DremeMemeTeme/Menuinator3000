@@ -19,6 +19,8 @@ public:
 	virtual double getPrice();
 	std::string getAllergens();
 
+	//display dish functions?
+
 	//no setters because won't be using the default deconstructor in the main program
 
 	//default deconstructor

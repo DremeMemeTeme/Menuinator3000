@@ -11,12 +11,13 @@ class mains: public dish { //inherits from dish class
 
 public:
 	mains(); //default constructor - delete if not used
-	mains(std::string dishName, double regPrice, std::string allergyInfo, double entreePrice, bool spiciness)
+	mains(std::string dishName, double regPrice, std::string allergyInfo, double MentreePrice, bool spicy);
 
 	//getters
 	void displayMains();
 	bool isSpicy();
-	double getPrice(); //displays both regular and entree prices
+	//double getPrice(); 
+	double getEntreePrice();
 
 	//default deconstructor
 	~mains();
