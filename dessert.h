@@ -13,7 +13,7 @@ public:
 	dessert();
 
 	//constructor taking arguments
-	dessert(std::string dishName, double regPrice, std::string allergyInfo, std::string sweetness);
+	dessert(std::string dishName, double regPrice, std::string allergyInfo, std::string dSweetness);
 
 	//getters
 	std::string howSweet();
