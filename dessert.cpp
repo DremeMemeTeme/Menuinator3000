@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int numDesserts = 0;
+int dessert::numDesserts = 0;
 
 //default constructor - delete if don't use in main
 dessert::dessert() : dish() {
@@ -13,7 +13,7 @@ dessert::dessert() : dish() {
 	numDesserts++;
 }
 
-dessert::dessert(string dishName, double regPrice, string allergyInfo, string dSweetness) : dish(string dishName, double regPrice, string allergyInfo) {
+dessert::dessert(string dishName, double regPrice, string allergyInfo, string dSweetness) : dish(dishName, regPrice, allergyInfo) {
 	sweetness = dSweetness;
 	numDesserts++;
 }
