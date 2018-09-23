@@ -5,17 +5,26 @@
 
 class dish {
 	std::string name;
-	int price; //price of regular size
-	std::string allergens; //lists common allergens present in food
+	double price;
+	std::string allergens;
 
 public:
-	//default constructor
+	//default constructor - if we don't use this at all, will need to delete it
 	dish();
-
 	//constructor taking arguments
-	dish(std::string dishName, int regPrice, std::string allergyInfo);
+	dish(std::string dishName, double regPrice, std::string allergyInfo);
 
 	//getters
-	getName();
-	virtual getPrice(); //different function for the subclasses
-}	
+	std::string getName();
+	virtual double getPrice();
+	std::string getAllergens();
+
+	//display dish functions?
+
+	//no setters because won't be using the default deconstructor in the main program
+
+	//default deconstructor
+	~dish();
+};
+
+#endif
