@@ -5,32 +5,25 @@
 #include <string>
 #include "dish.h"
 
+
 class menu 
 {
 	//variables
-	int itemCount;  //number of items ordered
-	std::string itemName; //name of dish added
-
-
+	dish menuCollection[15];  // holds the differnt objects, probably should make this dynamic
+	std::string itemName;     //name of dish added
+	std::string itemType;     //type of dish (main, drink or dessert)
 
 
 public: 
 	//constructor
 	menu();
-	menu(<inser_parameters_here>);
+	menu(std::string itemName, double price);
 
 	//behaviour
-	void addDish();
-	int viewMenuContent();   //displays/prints all the food/dirnk items 
-	                         //in the mains, dish, dessert classes
-	
+	void addDish(dish food); //add main,drinks,dessert objects into menu 
 
 	//getter
-	void orderCount();   //gets value of itemCount
-
-
-	//setter
-
+	void dishName(); //
 
 	~menu();
 
