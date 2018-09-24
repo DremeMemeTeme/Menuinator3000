@@ -12,11 +12,13 @@ mains::mains():dish() {
 	numMains++;
 	entreePrice = 0.0;
 	spiciness = false;
+	allergens = "?";
 }
 
-mains::mains(string dishName, double regPrice, string allergyInfo, double mEntreePrice, bool spicy):dish(dishName, regPrice, allergyInfo) {
+mains::mains(string dishName, double regPrice, string allergyInfo, double mEntreePrice, bool spicy):dish(dishName, regPrice) {
 	numMains++;
 	entreePrice = mEntreePrice;
+	allergens = allergyInfo;
 	spiciness = spicy;
 }
 /*
@@ -32,7 +34,9 @@ bool mains::isSpicy() {
 	return spiciness;
 }
 
-//display function?
+string mains::getInfo() {
+	return allergens;
+}
 
 //default deconstructor
 mains::~mains() {

@@ -6,27 +6,22 @@ using namespace std;
 dish::dish() {
 	name = "?";
 	price = 0;
-	allergens = "?";
 }
 
-dish::dish(string dishName, double regPrice, string allergyInfo) {
+dish::dish(string dishName, double regPrice) {
 	name = dishName;
 	price = regPrice;
-	allergens = allergyInfo;
+	
 }
 
 string dish::getName() {
 	return name;
 }
 
-//implementation of base getprice function
 double dish::getPrice() {
 	return price;
 }
 
-string dish::getAllergens() {
-	return allergens;
-}
 
 //default deconstructor
 dish::~dish() {

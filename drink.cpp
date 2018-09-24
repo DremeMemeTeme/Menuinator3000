@@ -15,7 +15,7 @@ drink::drink() : dish() {
 	recommendedDish = "?";
 }
 
-drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice, bPrice, recomDish) {
+drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice) {
 	numDrinks++;
 	name = dishName;
 	glassPrice = regPrice;
@@ -31,7 +31,7 @@ double drink::getBottlePrice() {
 	return bottlePrice;
 }
 
-string drink::getDishPairing() {
+string drink::getInfo() {
 	return recommendedDish;
 }
 

@@ -19,9 +19,7 @@ public:
 	//getters
 	double getGlassPrice();
 	double getBottlePrice();
-	std::string getDishPairing();
-
-	//display function? or in menu object
+	std::string getInfo(); //returns recommended dish pairing
 
 	//default deconstructor
 	~drink();
