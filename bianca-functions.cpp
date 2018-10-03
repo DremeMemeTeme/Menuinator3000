@@ -12,3 +12,4 @@ void addDish(dish * order, int * currentDishes, dish addedDish, double dishCost,
 	totalCost = totalCost + dishCost;
 	cout << addedDish.getName() << " successfully added to order!\n";
 }
+
