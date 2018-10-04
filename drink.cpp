@@ -17,7 +17,6 @@ drink::drink() : dish() {
 
 drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice) {
 	numDrinks++;
-	name = dishName;
 	glassPrice = regPrice;
 	bottlePrice = bPrice;
 	recommendedDish = recomDish;
