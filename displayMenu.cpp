@@ -33,7 +33,7 @@ int main(){
 
 	string menuChoice;  //user input as a string
 
-	cout <<"What woudl you like to look at?" << '\n';
+	cout <<"What would you like to look at?" << '\n';
 	cin >> menuChoice;
 
 	if(menuChoice == "Mains" ||menuChoice ==  "mains")
@@ -41,7 +41,7 @@ int main(){
 		cout << "HERE IS OUR MAINS MENU:" << '\n';
 		for(int i=0; i<mainsCount; i++)
 		{
-			cout << mainsMenu[i] << "....." << "$ " << mainsPrice[i] << '\n';
+			cout << mainsMenu[i] << "....." << "$ " << mainsPrice[i] << '\n'; //in final program, insert "displayMainsMenu" function here
 		}
 	}
 
