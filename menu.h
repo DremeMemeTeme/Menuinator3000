@@ -1,18 +1,17 @@
 #ifndef MENU_H
 #define MENU_H
 
-
 #include <string>
 #include "dish.h"
-
 
 class menu 
 {
 	//variables
-	dish * dishArray;  // holds the differnt objects, probably should make this dynamic
+	dish ** dishArray;  // holds the differnt objects, probably should make this dynamic
 	std::string menuName; 
 	int maxItems; //max number of dishes you can add to menu (not order)
 	std::string dishType; 
+	int dishCount;
 
 public: 
 	//constructor
@@ -23,7 +22,7 @@ public:
 	void addDish(dish food); //add main,drinks,dessert objects into menu 
 
 	//getter
-	std::string dishName();  
+	std::string getDishName();  
 	int getMax();  //max number of dishes you can add to menu 
 
 	//setter
