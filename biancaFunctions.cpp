@@ -31,3 +31,16 @@ void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCo
 	*currentDishes = *currentDishes - 1; //because deleted a dish
 	*totalCost = *totalCost - dishCost;
 }
+
+//find a match between user input and item in order array
+int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes) {
+	int i;
+	for (i=0; i<currentDishes; i++) {
+		//if match found between user input and a dish name in the order array:
+		if (strcmpi(inputtedName, orderArray[i]->getName()) == 0) {
+			return i; //returns index of match in orderArray
+		}
+	}
+
+	return -1; //ie match not found
+}

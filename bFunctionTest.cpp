@@ -11,7 +11,7 @@ extern void addMains(dish ** order, int * currentDishes, mains * addedMains, dou
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost);
 
 int main() {
-	mains * spag = new mains("Spaghetti", 18.90, "gluten", 15.9, false);
+	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
 	mains * sandwich = new mains("Sandwich", 7.9, "gluten, dairy", 4.50, false);
 	mains * curry = new mains("Vindaloo", 18.9, "no allergens", 15.8, true);
 	mains * salad = new mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
@@ -24,8 +24,8 @@ int main() {
 	double totalCost = 0.0; //initializing total cost variable
 	double * totalCostPtr = &totalCost;
 
-	double spagCost = spag->getPrice(); //assuming the customer only wants to order mains
-	addMains(order, currentDishesPtr, spag, spagCost, totalCostPtr);
+	double spagCost = spag.getPrice(); //assuming the customer only wants to order mains
+	addMains(order, currentDishesPtr, &spag, spagCost, totalCostPtr);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; //for debugging purposes
 
@@ -71,8 +71,7 @@ int main() {
 	for (j=0; j<currentDishes; j++) {
 		delete order[j];
 	}
-
-	delete sandwich;
+	
 	delete[] order;
 
 	return 0;
