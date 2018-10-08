@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <string.h>
 #include "dish.h"
 #include "mains.h"
 #include "dessert.h"
@@ -37,7 +38,7 @@ int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes) 
 	int i;
 	for (i=0; i<currentDishes; i++) {
 		//if match found between user input and a dish name in the order array:
-		if (strcmpi(inputtedName, orderArray[i]->getName()) == 0) {
+		if (strcasecmp(inputtedName.c_str(), (orderArray[i]->getName()).c_str()) == 0) {
 			return i; //returns index of match in orderArray
 		}
 	}
