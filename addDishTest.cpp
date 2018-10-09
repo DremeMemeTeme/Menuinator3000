@@ -25,19 +25,14 @@ void addDish(dish ** orderArray, int * currentDishes, double * totalCost, dish *
 			cin >> size;
 		} else {
 			switch size {
-				case 1:
-				addedDish->setSize("main");
+				case 1: //ie main size
+				*totalCost = *totalCost + addedDish->getPrice();
 				break;
 
-				case 2:
-				addedDish->setSize("entree");
+				case 2: //ie entree size
+				*totalCost = *totalCost + addedDish->getEntreePrice();
 				break;
 			}
-		}
-		if (addedDish->getMainsSize() == "entree") { //will need a "setSize" function
-			*totalCost = *totalCost + addedDish->getEntreePrice();
-		} else {
-			*totalCost = *totalCost + addedDish->getPrice();
 		}
 		break;
 
@@ -56,18 +51,13 @@ void addDish(dish ** orderArray, int * currentDishes, double * totalCost, dish *
 		} else {
 			switch size {
 				case 1:
-				addedDish->setSize("glass");
+				*totalCost = *totalCost + addedDish->getPrice();
 				break;
 
 				case 2:
-				addedDish->setSize("bottle");
+				*totalCost = *totalCost + addedDish->getBottlePrice();;
 				break;
 			}
-		}
-		if (addedDish->getDrinkSize() == "glass") { //will need a "setSize" function
-			*totalCost = *totalCost + addedDish->getPrice();
-		} else {
-			*totalCost = *totalCost + addedDish->getBottlePrice();
 		}
 		break;
 	}
