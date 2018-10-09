@@ -6,6 +6,7 @@
 class dish {
 	std::string name;
 	double price;
+	std::string type; //used for differentiating between subclasses
 
 public:
 	//default constructor - if we don't use this at all, will need to delete it
@@ -17,6 +18,7 @@ public:
 	std::string getName();
 	double getPrice();
 	virtual std::string getInfo() = 0; //pure virtual - returns allergen info or paired dish
+	std::string getType();
 
 	//no setters because won't be using the default deconstructor in the main program
 

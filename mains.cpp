@@ -7,12 +7,13 @@ using namespace std;
 
 int mains::numMains = 0; //initializing the class variable
 
-//default constructor - delete if don't use in main
+//default constructor 
 mains::mains():dish() {
 	numMains++;
 	entreePrice = 0.0;
 	spiciness = false;
 	allergens = "?";
+	type = "mains";
 }
 
 mains::mains(string dishName, double regPrice, string allergyInfo, double mEntreePrice, bool spicy):dish(dishName, regPrice) {
@@ -20,6 +21,7 @@ mains::mains(string dishName, double regPrice, string allergyInfo, double mEntre
 	entreePrice = mEntreePrice;
 	allergens = allergyInfo;
 	spiciness = spicy;
+	type = "mains";
 }
 /*
 double mains::getPrice() {

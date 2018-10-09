@@ -7,25 +7,27 @@ using namespace std;
 //class variable
 int drink::numDrinks = 0;
 
-//default constructor - delete if not used in main
+//default constructor 
 drink::drink() : dish() {
 	numDrinks++;
-	glassPrice = 0.0;
+	//glassPrice = 0.0;
 	bottlePrice = 0.0;
+	type = "drink";
 	recommendedDish = "?";
 }
 
 drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice) {
 	numDrinks++;
-	glassPrice = regPrice;
+	price = regPrice;
 	bottlePrice = bPrice;
+	type = "drink";
 	recommendedDish = recomDish;
 }
-
-double drink::getGlassPrice() {
+/*
+double drink::getGlassPrice() { //getGassPrice is the same as getPrice function (defined in dish class)
 	return glassPrice;
 }
-
+*/
 double drink::getBottlePrice() {
 	return bottlePrice;
 }
@@ -34,7 +36,6 @@ string drink::getInfo() {
 	return recommendedDish;
 }
 
-//display function, if including
 
 //default deconstructor
 drink::~drink() {

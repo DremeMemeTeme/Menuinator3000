@@ -6,18 +6,18 @@
 
 class drink : public dish {
 	static int numDrinks;
-	double glassPrice;
+	//double glassPrice; - glassPrice is equivalent to regular Price
 	double bottlePrice;
 	std::string recommendedDish;
 
 public:
-	//default constructor - delete if not used in main
+	//default constructor 
 	drink();
 	//constructor taking arguments
 	drink(std::string dishName, double regPrice, double bPrice, std::string recomDish);
 
 	//getters
-	double getGlassPrice();
+	//double getGlassPrice(); - equivalent to getPrice function defined in dish.h
 	double getBottlePrice();
 	std::string getInfo(); //returns recommended dish pairing
 

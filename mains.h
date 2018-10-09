@@ -9,16 +9,17 @@ class mains: public dish { //inherits from dish class
 	double entreePrice;
 	bool spiciness;
 	std::string allergens;
+	//std::string size; - might not need this
 
 public:
-	mains(); //default constructor - delete if not used
+	mains(); //default constructor 
 	mains(std::string dishName, double regPrice, std::string allergyInfo, double MentreePrice, bool spicy);
 
 	//getters
-	void displayMains();
 	bool isSpicy();
 	std::string getInfo(); //returns allergen information
 	double getEntreePrice();
+	//std::string getSize(); //returns whether entree or main
 
 	//default deconstructor
 	~mains();

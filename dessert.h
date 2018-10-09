@@ -10,7 +10,7 @@ class dessert: public dish { //inherits from dish class
 	std::string allergens;
 
 public:
-	//default constructor - delete if not used
+	//default constructor 
 	dessert();
 
 	//constructor taking arguments
@@ -19,8 +19,6 @@ public:
 	//getters
 	std::string howSweet();
 	std::string getInfo(); //returns allergen information
-
-	//display function?
 
 	//default deconstructor
 	~dessert();
