@@ -17,6 +17,13 @@ void addMains(dish ** order, int * currentDishes, mains * addedMains, double dis
 	cout << addedMains->getName() << " successfully added to order!\n";
 }
 
+void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost) {
+	order[*currentDishes] = addedDessert;
+	*currentDishes = *currentDises + 1;
+	*totalCost = *totalCost + addedDessert->getPrice();
+	cout << addedDessert->getName() << " successfully added to order!\n";
+}
+
 //cancel a specific dish function
 void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost) {
 	int tempIndex = dishIndex; 
@@ -44,4 +51,15 @@ int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes) 
 	}
 
 	return -1; //ie match not found
+}
+
+void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost) {
+	//cout << "Your current order is: \n"; //or have this step in main rather than here?
+	int i;
+	for (i=0; i<currentDishes; i++) {
+		cout << orderArray[i]->getName() << "........$" << orderArray[i]->getPrice() << "\n"; 
+		//maybe add a "entree size" bool property to mains object, so can have an if loop about which price to display?
+	}
+
+	//cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too
 }

@@ -10,6 +10,7 @@ using namespace std;
 extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double dishCost, double * totalCost);
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
+extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost);
 
 int main() {
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -67,18 +68,15 @@ int main() {
 
 		cancelDish(order, cancelIndex, currentDishesPtr, dishCost, totalCostPtr);
 
-		cout << dishName << " successfully removed from order! Your order is now: \n";
+		cout << dishName << " successfully removed from order! Your order is now: \n\n";
 
-		int j;
-		for (j=0; j<currentDishes; j++) {
-			cout << order[j]->getName() << "			\n";
-		}
+		displayCurrentOrder(order, currentDishes, totalCost);
 
 	} else {
 		cout << "Dish not found.\n";
 	}
 	
-	cout << "Current total cost: $" << totalCost << endl;
+	cout << "\nCurrent total cost: $" << totalCost << endl;
 
 	/*int k;
 	for (k=0; k<currentDishes; k++) {
