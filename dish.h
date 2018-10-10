@@ -6,6 +6,7 @@
 class dish {
 	std::string name;
 	double price;
+	std::string dishType; //placeholder var for subclass "type" variable
 	
 
 public:
@@ -18,6 +19,7 @@ public:
 	std::string getName();
 	double getPrice();
 	virtual std::string getInfo() = 0; //pure virtual - returns allergen info or paired dish
+	virtual std::string getType() = 0; //pure virtual - defined in subclasses
 
 	//no setters because won't be using the default deconstructor in the main program
 
