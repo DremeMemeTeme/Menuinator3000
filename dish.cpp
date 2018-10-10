@@ -22,6 +22,10 @@ double dish::getPrice() {
 	return price;
 }
 
+double dish::getDiffPrice() { //won't use this function in main, but still has to be declared
+	return 0; 
+}
+
 
 //default deconstructor
 dish::~dish() {

@@ -18,6 +18,7 @@ public:
 	//getters
 	std::string getName();
 	double getPrice();
+	virtual double getDiffPrice(); //returns either entree or bottle price for mains or drinks
 	virtual std::string getInfo() = 0; //pure virtual - returns allergen info or paired dish
 	virtual std::string getType() = 0; //pure virtual - defined in subclasses
 

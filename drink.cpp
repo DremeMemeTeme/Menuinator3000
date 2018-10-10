@@ -27,7 +27,7 @@ double drink::getGlassPrice() { //getGassPrice is the same as getPrice function 
 	return glassPrice;
 }
 */
-double drink::getBottlePrice() {
+double drink::getDiffPrice() {
 	return bottlePrice;
 }
 
@@ -38,15 +38,16 @@ string drink::getInfo() {
 string drink::getType() {
 	return type;
 }
-
+/*
 string drink::getSize() {
 	return size;
 }
-
+*/
+/*
 void drink::setSize(string dishSize) {
 	size = dishSize;
 }
-
+*/
 //default deconstructor
 drink::~drink() {
 	//delete any memory allocated by new

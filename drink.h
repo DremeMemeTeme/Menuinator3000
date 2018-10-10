@@ -10,7 +10,7 @@ class drink : public dish {
 	double bottlePrice;
 	std::string recommendedDish;
 	std::string type; //used for differentiating between subclasses - might not need
-	std::string size;
+	//std::string size;
 
 public:
 	//default constructor 
@@ -20,13 +20,13 @@ public:
 
 	//getters
 	//double getGlassPrice(); - equivalent to getPrice function defined in dish.h
-	double getBottlePrice();
+	double getDiffPrice();
 	std::string getInfo(); //returns recommended dish pairing
 	std:: string getType();
-	std::string getSize();
+	//std::string getSize();
 
 	//setter
-	void setSize(std::string dishSize);
+	//void setSize(std::string dishSize);
 
 	//default deconstructor
 	~drink();
