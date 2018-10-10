@@ -14,6 +14,7 @@ mains::mains():dish() {
 	spiciness = false;
 	allergens = "?";
 	type = "mains";
+	size = "main"; //default size is main size
 }
 
 mains::mains(string dishName, double regPrice, string allergyInfo, double mEntreePrice, bool spicy):dish(dishName, regPrice) {
@@ -22,6 +23,7 @@ mains::mains(string dishName, double regPrice, string allergyInfo, double mEntre
 	allergens = allergyInfo;
 	spiciness = spicy;
 	type = "mains";
+	size = "main";
 }
 /*
 double mains::getPrice() {
@@ -42,6 +44,14 @@ string mains::getInfo() {
 
 string mains::getType() {
 	return type;
+}
+
+string mains::getSize() {
+	return size;
+}
+
+void mains::setSize(string dishSize) {
+	size = dishSize;
 }
 
 //default deconstructor

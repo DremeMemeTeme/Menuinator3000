@@ -9,8 +9,8 @@ class mains: public dish { //inherits from dish class
 	double entreePrice;
 	bool spiciness;
 	std::string allergens;
-	std::string type; //used for differentiating between subclasses
-	//std::string size; - might not need this
+	std::string type; //used for differentiating between subclasses - might not need this
+	std::string size; // might not need this
 
 public:
 	mains(); //default constructor 
@@ -21,7 +21,10 @@ public:
 	std::string getInfo(); //returns allergen information
 	double getEntreePrice();
 	std:: string getType();
-	//std::string getSize(); //returns whether entree or main
+	std::string getSize(); //returns whether entree or main
+
+	//setter
+	void setSize(std::string dishSize); 
 
 	//default deconstructor
 	~mains();

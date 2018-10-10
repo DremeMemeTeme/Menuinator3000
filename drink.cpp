@@ -39,6 +39,14 @@ string drink::getType() {
 	return type;
 }
 
+string drink::getSize() {
+	return size;
+}
+
+void drink::setSize(string dishSize) {
+	size = dishSize;
+}
+
 //default deconstructor
 drink::~drink() {
 	//delete any memory allocated by new
