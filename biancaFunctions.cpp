@@ -10,11 +10,19 @@
 using namespace std;
 
 //add dish function - will need to make a function for each subclasse since dish is an abstract class
-void addMains(dish ** order, int * currentDishes, mains * addedMains, double dishCost, double * totalCost) {
+void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size) {
 	order[*currentDishes] = addedMains;
 	*currentDishes = *currentDishes + 1;
-	*totalCost = *totalCost + dishCost;
-	cout << addedMains->getName() << " successfully added to order!\n";
+	switch (size - '0') {
+			case 1: //ie main size
+			*totalCost = *totalCost + addedMains->getPrice();
+			break;
+
+			case 2: //ie entree size
+			*totalCost = *totalCost + addedMains->getEntreePrice();
+			break;
+		}
+	cout << addedMains->getName() << " successfully added to order!\n"; 
 }
 
 void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost) {
@@ -22,6 +30,21 @@ void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, doub
 	*currentDishes = *currentDishes + 1;
 	*totalCost = *totalCost + addedDessert->getPrice();
 	cout << addedDessert->getName() << " successfully added to order!\n";
+}
+
+void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size) {
+	order[*currentDishes] = addedDrink;
+	*currentDishes = *currentDishes + 1;
+	switch (size - '0') {
+			case 1:
+			*totalCost = *totalCost + addedDrink->getPrice();
+			break;
+
+			case 2:
+			*totalCost = *totalCost + addedDrink->getBottlePrice();
+			break;
+		}
+	cout << addedDrink->getName() << " successfully added to order!\n";
 }
 
 //cancel a specific dish function

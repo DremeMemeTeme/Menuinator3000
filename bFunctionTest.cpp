@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern void addDish(dish ** order, int * currentDishes, mains * addedMains, double dishCost, double * totalCost);
+extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size);
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost);
@@ -26,28 +26,68 @@ int main() {
 	double totalCost = 0.0; //initializing total cost variable
 	double * totalCostPtr = &totalCost;
 
-	double spagCost = spag.getPrice(); //assuming the customer only wants to order mains
-	addDish(order, currentDishesPtr, &spag, spagCost, totalCostPtr);
+	char size = '0'; //as a char so that code doesnt break when chars entered instead of ints
+	cout << "Please enter the number corresponding to the size you would like to order:\n";
+	cout << "(1) Main\n" << "(2) Entree\n";
+	cin >> size;
+	while (size - '0' < 1 || size - '0' > 2) {
+		cout << "That is not a valid number! Please enter either 1 or 2: ";
+		cin >> size;
+	} 
+
+	addMains(order, currentDishesPtr, &spag, totalCostPtr, size);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; //for debugging purposes
 
-	double sandCost = sandwich.getPrice(); 
-	addDish(order, currentDishesPtr, &sandwich, sandCost, totalCostPtr);
+	size = '0';
+	cout << "Please enter the number corresponding to the size you would like to order:\n";
+	cout << "(1) Main\n" << "(2) Entree\n";
+	cin >> size;
+	while (size - '0' < 1 || size - '0' > 2) {
+		cout << "That is not a valid number! Please enter either 1 or 2: ";
+		cin >> size;
+	} 
+
+	addMains(order, currentDishesPtr, &sandwich, totalCostPtr, size);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
-	double curryCost = curry.getPrice(); 
-	addDish(order, currentDishesPtr, &curry, curryCost, totalCostPtr);
+	size = '0';
+	cout << "Please enter the number corresponding to the size you would like to order:\n";
+	cout << "(1) Main\n" << "(2) Entree\n";
+	cin >> size;
+	while (size - '0' < 1 || size - '0' > 2) {
+		cout << "That is not a valid number! Please enter either 1 or 2: ";
+		cin >> size;
+	} 
+
+	addMains(order, currentDishesPtr, &curry, totalCostPtr, size);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
-	double saladCost = salad.getPrice(); 
-	addDish(order, currentDishesPtr, &salad, saladCost, totalCostPtr);
+	size = '0';
+	cout << "Please enter the number corresponding to the size you would like to order:\n";
+	cout << "(1) Main\n" << "(2) Entree\n";
+	cin >> size;
+	while (size - '0' < 1 || size - '0' > 2) {
+		cout << "That is not a valid number! Please enter either 1 or 2: ";
+		cin >> size;
+	} 
+
+	addMains(order, currentDishesPtr, &salad, totalCostPtr, size);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
-	double pastaCost = pasta.getPrice(); 
-	addDish(order, currentDishesPtr, &pasta, pastaCost, totalCostPtr);
+	size = '0';
+	cout << "Please enter the number corresponding to the size you would like to order:\n";
+	cout << "(1) Main\n" << "(2) Entree\n";
+	cin >> size;
+	while (size - '0' < 1 || size - '0' > 2) {
+		cout << "That is not a valid number! Please enter either 1 or 2: ";
+		cin >> size;
+	} 
+
+	addMains(order, currentDishesPtr, &pasta, totalCostPtr, size);
 
 	cout << "Current dishes: " << currentDishes << "\n";
 
@@ -55,6 +95,7 @@ int main() {
 
 	//can test match user input to array element function here
 
+	cin.ignore(100, '\n'); //ignores newline character for cin input
 	string cancelledDishName; //name of dish to be cancelled
 	cout << "Please enter the name of the dish you want to cancel: ";
 	getline(cin, cancelledDishName); //will take in dish name even if it is 2 words
@@ -62,8 +103,13 @@ int main() {
 	int cancelIndex;
 	cancelIndex = findDishInOrder(cancelledDishName, order, currentDishes);
 
-	if (cancelIndex != -1) {
-		double dishCost = order[cancelIndex]->getPrice();
+	while (cancelIndex == -1 && cancelledDishName != "c") {
+		cout << "\nDish not found, please try again or type 'c' to cancel action: ";
+		getline(cin, cancelledDishName);
+		cancelIndex = findDishInOrder(cancelledDishName, order, currentDishes);
+	}
+	if (cancelledDishName != "c") {
+		double dishCost = order[cancelIndex]->getPrice(); //
 		string dishName = order[cancelIndex]->getName();
 
 		cancelDish(order, cancelIndex, currentDishesPtr, dishCost, totalCostPtr);
@@ -72,9 +118,7 @@ int main() {
 
 		displayCurrentOrder(order, currentDishes, totalCost);
 
-	} else {
-		cout << "Dish not found.\n";
-	}
+	} 
 	
 	cout << "\nCurrent total cost: $" << totalCost << endl;
 
