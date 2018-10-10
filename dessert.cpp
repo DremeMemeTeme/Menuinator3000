@@ -29,6 +29,10 @@ string dessert::getInfo() {
 	return allergens;
 }
 
+string dessert::getType() {
+	return type;
+}
+
 dessert::~dessert() {
 	//delete any memory allocated by new
 }

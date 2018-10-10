@@ -19,7 +19,7 @@ void addMains(dish ** order, int * currentDishes, mains * addedMains, double dis
 
 void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost) {
 	order[*currentDishes] = addedDessert;
-	*currentDishes = *currentDises + 1;
+	*currentDishes = *currentDishes + 1;
 	*totalCost = *totalCost + addedDessert->getPrice();
 	cout << addedDessert->getName() << " successfully added to order!\n";
 }

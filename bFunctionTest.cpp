@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double dishCost, double * totalCost);
+extern void addDish(dish ** order, int * currentDishes, mains * addedMains, double dishCost, double * totalCost);
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost);
@@ -27,27 +27,27 @@ int main() {
 	double * totalCostPtr = &totalCost;
 
 	double spagCost = spag.getPrice(); //assuming the customer only wants to order mains
-	addMains(order, currentDishesPtr, &spag, spagCost, totalCostPtr);
+	addDish(order, currentDishesPtr, &spag, spagCost, totalCostPtr);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; //for debugging purposes
 
 	double sandCost = sandwich.getPrice(); 
-	addMains(order, currentDishesPtr, &sandwich, sandCost, totalCostPtr);
+	addDish(order, currentDishesPtr, &sandwich, sandCost, totalCostPtr);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
 	double curryCost = curry.getPrice(); 
-	addMains(order, currentDishesPtr, &curry, curryCost, totalCostPtr);
+	addDish(order, currentDishesPtr, &curry, curryCost, totalCostPtr);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
 	double saladCost = salad.getPrice(); 
-	addMains(order, currentDishesPtr, &salad, saladCost, totalCostPtr);
+	addDish(order, currentDishesPtr, &salad, saladCost, totalCostPtr);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
 	double pastaCost = pasta.getPrice(); 
-	addMains(order, currentDishesPtr, &pasta, pastaCost, totalCostPtr);
+	addDish(order, currentDishesPtr, &pasta, pastaCost, totalCostPtr);
 
 	cout << "Current dishes: " << currentDishes << "\n";
 

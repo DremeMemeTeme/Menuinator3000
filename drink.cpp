@@ -36,6 +36,9 @@ string drink::getInfo() {
 	return recommendedDish;
 }
 
+string drink::getType() {
+	return type;
+}
 
 //default deconstructor
 drink::~drink() {

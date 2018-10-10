@@ -40,6 +40,10 @@ string mains::getInfo() {
 	return allergens;
 }
 
+string mains::getType() {
+	return type;
+}
+
 //default deconstructor
 mains::~mains() {
 	//delete any memory allocated by new

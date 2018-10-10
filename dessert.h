@@ -8,6 +8,7 @@ class dessert: public dish { //inherits from dish class
 	static int numDesserts; //keeps track of how many dessert objects created
 	std::string sweetness;
 	std::string allergens;
+	std::string type; //used for differentiating between subclasses
 
 public:
 	//default constructor 
@@ -19,6 +20,7 @@ public:
 	//getters
 	std::string howSweet();
 	std::string getInfo(); //returns allergen information
+	std:: string getType();
 
 	//default deconstructor
 	~dessert();

@@ -12,7 +12,7 @@ using namespace std;
 //testing a possible generic addDish function - would require more object properties to be added
 
 void addDish(dish ** orderArray, int * currentDishes, double * totalCost, dish * addedDish) {
-	switch addedDish->getType() {
+	switch (addedDish->getType()) {
 		orderArray[*currentDishes] = addedDish; //these 2 lines true for all cases
 		*currentDishes = *currentDishes + 1;
 		case "mains" :
@@ -24,7 +24,7 @@ void addDish(dish ** orderArray, int * currentDishes, double * totalCost, dish *
 			cout << "That is not a valid number! Please enter either 1 or 2: ";
 			cin >> size;
 		} else {
-			switch size {
+			switch (size) {
 				case 1: //ie main size
 				*totalCost = *totalCost + addedDish->getPrice();
 				break;
@@ -49,7 +49,7 @@ void addDish(dish ** orderArray, int * currentDishes, double * totalCost, dish *
 			cout << "That is not a valid number! Please enter either 1 or 2: ";
 			cin >> size;
 		} else {
-			switch size {
+			switch (size) {
 				case 1:
 				*totalCost = *totalCost + addedDish->getPrice();
 				break;
