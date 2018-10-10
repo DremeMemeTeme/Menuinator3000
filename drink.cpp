@@ -12,14 +12,14 @@ drink::drink() : dish() {
 	numDrinks++;
 	//glassPrice = 0.0;
 	bottlePrice = 0.0;
-	type = "drink";
+	//type = "drink";
 	recommendedDish = "?";
 }
 
 drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice) {
 	numDrinks++;
 	bottlePrice = bPrice;
-	type = "drink";
+	//type = "drink";
 	recommendedDish = recomDish;
 }
 /*
@@ -34,7 +34,7 @@ double drink::getBottlePrice() {
 string drink::getInfo() {
 	return recommendedDish;
 }
-
+/*
 string drink::getType() {
 	return type;
 }
@@ -42,11 +42,12 @@ string drink::getType() {
 string drink::getSize() {
 	return size;
 }
-
+*/
+/*
 void drink::setSize(string dishSize) {
 	size = dishSize;
 }
-
+*/
 //default deconstructor
 drink::~drink() {
 	//delete any memory allocated by new
