@@ -9,7 +9,7 @@ class drink : public dish {
 	//double glassPrice; - glassPrice is equivalent to regular Price
 	double bottlePrice;
 	std::string recommendedDish;
-	//std::string type; //used for differentiating between subclasses - might not need
+	std::string type; //used for differentiating between subclasses - might not need
 	//std::string size;
 
 public:
@@ -20,9 +20,9 @@ public:
 
 	//getters
 	//double getGlassPrice(); - equivalent to getPrice function defined in dish.h
-	double getBottlePrice();
+	double getDiffPrice();
 	std::string getInfo(); //returns recommended dish pairing
-	//std:: string getType();
+	std:: string getType();
 	//std::string getSize();
 
 	//setter

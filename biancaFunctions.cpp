@@ -10,16 +10,22 @@
 using namespace std;
 
 //add dish function - will need to make a function for each subclasse since dish is an abstract class
-void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size) {
+void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes) {
 	order[*currentDishes] = addedMains;
-	*currentDishes = *currentDishes + 1;
+	
 	switch (size - '0') {
 			case 1: //ie main size
 			*totalCost = *totalCost + addedMains->getPrice();
+			dishSizes[*currentDishes] = 0;
+			cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
+			*currentDishes = *currentDishes + 1;
 			break;
 
 			case 2: //ie entree size
-			*totalCost = *totalCost + addedMains->getEntreePrice();
+			*totalCost = *totalCost + addedMains->getDiffPrice();
+			dishSizes[*currentDishes] = 1;
+			cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
+			*currentDishes = *currentDishes + 1;
 			break;
 		}
 	cout << addedMains->getName() << " successfully added to order!\n"; 
@@ -32,30 +38,35 @@ void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, doub
 	cout << addedDessert->getName() << " successfully added to order!\n";
 }
 
-void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size) {
+void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes) {
 	order[*currentDishes] = addedDrink;
 	*currentDishes = *currentDishes + 1;
 	switch (size - '0') {
 			case 1:
 			*totalCost = *totalCost + addedDrink->getPrice();
+			dishSizes[*currentDishes] = 0;
+			*currentDishes = *currentDishes + 1;
 			break;
 
 			case 2:
-			*totalCost = *totalCost + addedDrink->getBottlePrice();
+			*totalCost = *totalCost + addedDrink->getDiffPrice();
+			dishSizes[*currentDishes] = 1;
+			*currentDishes = *currentDishes + 1;
 			break;
 		}
 	cout << addedDrink->getName() << " successfully added to order!\n";
 }
 
 //cancel a specific dish function
-void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost) {
+void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes) {
 	int tempIndex = dishIndex; 
 	int remainder = *currentDishes - dishIndex; //number of remainder dishes after dish to be cancelled in the order array
-
+	
 	//reshuffling the order array
 	int i;
 	for (i=0; i<remainder; i++) {
 		order[tempIndex] = order[tempIndex+1];
+		dishSizes[tempIndex] = dishSizes[tempIndex+1]; //shuffles size array too
 		tempIndex++;
 	}
 
@@ -76,12 +87,18 @@ int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes) 
 	return -1; //ie match not found
 }
 
-void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost) {
+void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes) {
 	//cout << "Your current order is: \n"; //or have this step in main rather than here?
 	int i;
 	for (i=0; i<currentDishes; i++) {
-		cout << orderArray[i]->getName() << "........$" << orderArray[i]->getPrice() << "\n"; 
-		//maybe add a "entree size" bool property to mains object, so can have an if loop about which price to display?
+		cout << orderArray[i]->getName() << "........$"; 
+
+		if (dishSizes[i] == 0) {
+			cout << orderArray[i]->getPrice() << "\n"; 
+		} else {
+			cout << orderArray[i]->getDiffPrice() << "\n";
+		}
+		
 	}
 
 	//cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too

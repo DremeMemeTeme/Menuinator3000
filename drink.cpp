@@ -12,14 +12,14 @@ drink::drink() : dish() {
 	numDrinks++;
 	//glassPrice = 0.0;
 	bottlePrice = 0.0;
-	//type = "drink";
+	type = "drink";
 	recommendedDish = "?";
 }
 
 drink::drink(string dishName, double regPrice, double bPrice, string recomDish):dish(dishName, regPrice) {
 	numDrinks++;
 	bottlePrice = bPrice;
-	//type = "drink";
+	type = "drink";
 	recommendedDish = recomDish;
 }
 /*
@@ -27,18 +27,18 @@ double drink::getGlassPrice() { //getGassPrice is the same as getPrice function 
 	return glassPrice;
 }
 */
-double drink::getBottlePrice() {
+double drink::getDiffPrice() {
 	return bottlePrice;
 }
 
 string drink::getInfo() {
 	return recommendedDish;
 }
-/*
+
 string drink::getType() {
 	return type;
 }
-
+/*
 string drink::getSize() {
 	return size;
 }

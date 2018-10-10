@@ -7,10 +7,10 @@
 
 using namespace std;
 
-extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size);
-extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost);
+extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes);
+extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
-extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost);
+extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
 
 int main() {
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -23,6 +23,7 @@ int main() {
 	int * currentDishesPtr = &currentDishes;
 	int maxDishes = 10;
 	dish ** order = new dish * [maxDishes];
+	int * dishSizes = new int[maxDishes]; //for storing sizes of dishes added
 	double totalCost = 0.0; //initializing total cost variable
 	double * totalCostPtr = &totalCost;
 
@@ -35,7 +36,7 @@ int main() {
 		cin >> size;
 	} 
 
-	addMains(order, currentDishesPtr, &spag, totalCostPtr, size);
+	addMains(order, currentDishesPtr, &spag, totalCostPtr, size, dishSizes);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; //for debugging purposes
 
@@ -48,7 +49,7 @@ int main() {
 		cin >> size;
 	} 
 
-	addMains(order, currentDishesPtr, &sandwich, totalCostPtr, size);
+	addMains(order, currentDishesPtr, &sandwich, totalCostPtr, size, dishSizes);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
@@ -61,7 +62,7 @@ int main() {
 		cin >> size;
 	} 
 
-	addMains(order, currentDishesPtr, &curry, totalCostPtr, size);
+	addMains(order, currentDishesPtr, &curry, totalCostPtr, size, dishSizes);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
@@ -74,7 +75,7 @@ int main() {
 		cin >> size;
 	} 
 
-	addMains(order, currentDishesPtr, &salad, totalCostPtr, size);
+	addMains(order, currentDishesPtr, &salad, totalCostPtr, size, dishSizes);
 
 	//cout << "Current dishes: " << currentDishes << "\n"; 
 
@@ -87,7 +88,7 @@ int main() {
 		cin >> size;
 	} 
 
-	addMains(order, currentDishesPtr, &pasta, totalCostPtr, size);
+	addMains(order, currentDishesPtr, &pasta, totalCostPtr, size, dishSizes);
 
 	cout << "Current dishes: " << currentDishes << "\n";
 
@@ -108,15 +109,33 @@ int main() {
 		getline(cin, cancelledDishName);
 		cancelIndex = findDishInOrder(cancelledDishName, order, currentDishes);
 	}
+
+	double dishCost;
+
 	if (cancelledDishName != "c") {
-		double dishCost = order[cancelIndex]->getPrice(); //
+		if (order[cancelIndex]->getType() == "mains") {
+			if (dishSizes[cancelIndex] == 1) {
+				dishCost = order[cancelIndex]->getDiffPrice();
+			} else {
+			dishCost = order[cancelIndex]->getPrice();
+			}
+		} else if (order[cancelIndex]->getType() == "drink") {
+			if (dishSizes[cancelIndex] == 1) {
+				dishCost = order[cancelIndex]->getDiffPrice();
+			} else {
+				dishCost = order[cancelIndex]->getPrice();
+			}
+		} else {
+			dishCost = order[cancelIndex]->getPrice();
+		}
+		
 		string dishName = order[cancelIndex]->getName();
 
-		cancelDish(order, cancelIndex, currentDishesPtr, dishCost, totalCostPtr);
+		cancelDish(order, cancelIndex, currentDishesPtr, dishCost, totalCostPtr, dishSizes);
 
 		cout << dishName << " successfully removed from order! Your order is now: \n\n";
 
-		displayCurrentOrder(order, currentDishes, totalCost);
+		displayCurrentOrder(order, currentDishes, totalCost, dishSizes);
 
 	} 
 	
@@ -129,6 +148,7 @@ int main() {
 	*/
 	
 	delete[] order;
+	delete[] dishSizes;
 
 	return 0;
 }

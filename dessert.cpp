@@ -32,7 +32,11 @@ string dessert::getInfo() {
 string dessert::getType() {
 	return type;
 }
-
+/*
+double dessert::getDiffPrice() {
+	return 0;
+}
+*/
 dessert::~dessert() {
 	//delete any memory allocated by new
 }
