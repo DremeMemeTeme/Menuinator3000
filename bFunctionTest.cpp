@@ -31,6 +31,7 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
+	cin.sync();
 	while (size - '0' < 1 || size - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
@@ -44,6 +45,7 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
+	cin.sync();
 	while (size - '0' < 1 || size - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
@@ -57,6 +59,7 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
+	cin.sync();
 	while (size - '0' < 1 || size - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
@@ -70,6 +73,7 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
+	cin.sync();
 	while (size - '0' < 1 || size - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
@@ -83,6 +87,7 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
+	cin.sync(); 
 	while (size - '0' < 1 || size - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;

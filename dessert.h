@@ -21,7 +21,7 @@ public:
 	std::string howSweet();
 	std::string getInfo(); //returns allergen information
 	std:: string getType();
-	double getDiffPrice(); //has to be declared since pure virtual, however won't use in dessert class
+	//double getDiffPrice(); //has to be declared since pure virtual, however won't use in dessert class
 
 	//default deconstructor
 	~dessert();

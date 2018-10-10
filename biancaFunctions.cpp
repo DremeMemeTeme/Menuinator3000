@@ -17,14 +17,14 @@ void addMains(dish ** order, int * currentDishes, mains * addedMains, double * t
 			case 1: //ie main size
 			*totalCost = *totalCost + addedMains->getPrice();
 			dishSizes[*currentDishes] = 0;
-			cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
+			//cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
 			*currentDishes = *currentDishes + 1;
 			break;
 
 			case 2: //ie entree size
 			*totalCost = *totalCost + addedMains->getDiffPrice();
 			dishSizes[*currentDishes] = 1;
-			cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
+			//cout << "dishSizes value = " << dishSizes[*currentDishes] << "\n";
 			*currentDishes = *currentDishes + 1;
 			break;
 		}
