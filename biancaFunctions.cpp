@@ -10,10 +10,10 @@
 using namespace std;
 
 //add dish function - will need to make a function for each subclasse since dish is an abstract class
-void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes) {
+void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, string size, int * dishSizes) {
 	order[*currentDishes] = addedMains;
 	
-	switch (size - '0') {
+	switch (size[0] - '0') {
 			case 1: //ie main size
 			*totalCost = *totalCost + addedMains->getPrice();
 			dishSizes[*currentDishes] = 0;
@@ -38,10 +38,10 @@ void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, doub
 	cout << addedDessert->getName() << " successfully added to order!\n";
 }
 
-void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes) {
+void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, string size, int * dishSizes) {
 	order[*currentDishes] = addedDrink;
 	*currentDishes = *currentDishes + 1;
-	switch (size - '0') {
+	switch (size[0] - '0') {
 			case 1:
 			*totalCost = *totalCost + addedDrink->getPrice();
 			dishSizes[*currentDishes] = 0;

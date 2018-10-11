@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes);
+extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, string size, int * dishSizes);
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
@@ -27,12 +27,12 @@ int main() {
 	double totalCost = 0.0; //initializing total cost variable
 	double * totalCostPtr = &totalCost;
 
-	char size = '0'; //as a char so that code doesnt break when chars entered instead of ints
+	string size = "0"; //as a char array (aka string) so that code doesnt break when chars entered instead of ints
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
-	cin.sync();
-	while (size - '0' < 1 || size - '0' > 2) {
+	
+	while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
 	} 
@@ -41,12 +41,12 @@ int main() {
 
 	//cout << "Current dishes: " << currentDishes << "\n"; //for debugging purposes
 
-	size = '0';
+	size = "0";
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
-	cin.sync();
-	while (size - '0' < 1 || size - '0' > 2) {
+	
+	while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
 	} 
@@ -59,8 +59,8 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
-	cin.sync();
-	while (size - '0' < 1 || size - '0' > 2) {
+	
+	while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
 	} 
@@ -73,8 +73,8 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
-	cin.sync();
-	while (size - '0' < 1 || size - '0' > 2) {
+	
+	while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
 	} 
@@ -87,8 +87,8 @@ int main() {
 	cout << "Please enter the number corresponding to the size you would like to order:\n";
 	cout << "(1) Main\n" << "(2) Entree\n";
 	cin >> size;
-	cin.sync(); 
-	while (size - '0' < 1 || size - '0' > 2) {
+	 
+	while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 		cout << "That is not a valid number! Please enter either 1 or 2: ";
 		cin >> size;
 	} 
