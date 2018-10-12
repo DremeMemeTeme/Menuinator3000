@@ -36,12 +36,27 @@ int main(){
 	drink white = drink("House White", 6.40, 25.0, "Creamy Fettucine");
 	drink red = drink("House Red", 6.40, 25.0, "Vindaloo");
 
-	//creating menus
+	//creating & intitializing menus
 	menu mainsMenu = menu("Mains Menu", "mains", 20);
+	//--------------------
+	mainsMenu.addDish(&spag);
+	mainsMenu.addDish(&sandwich);
+	mainsMenu.addDish(&curry);
+	mainsMenu.addDish(&salad);
+	mainsMenu.addDish(&pasta);
+	//--------------------
 
 	menu dessertMenu = menu("Dessert Menu", "dessert", 15);
+	//--------------------
+	dessertMenu.addDish(&choc_cake);
+	dessertMenu.addDish(&citrus_tart);
+	//--------------------
 
 	menu drinkMenu = menu("Drinks Menu", "drink", 15);
+	//--------------------
+	drinkMenu.addDish(&white);
+	drinkMenu.addDish(&red);
+	//--------------------
 
 	//creating order array
 	int maxDishes = 20; //max dishes that customer can order
