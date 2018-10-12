@@ -70,8 +70,6 @@ int main(){
 
 	string input = "0"; //initializing customer input variable
 
-	int dishNum; //initializing 
-
 	while (strcasecmp(input.c_str(), "quit".c_str()) != 0) { //using strcasecmp so case insensitive
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
@@ -80,6 +78,12 @@ int main(){
 		cout << "(3) Dessert Menu\n";
 		cout << "Please enter the number of the menu you would like to look at: ";
 		*/
+
+		//declaring all variables used within the following while loops here:
+		int dishNum; //initializing "add dish" number variable
+		int menuInput; //variable for deciding which menu to display - so that options don't get confused by only using "input"
+		int mainsInput; 
+
 		displayOptions(); //calling this shows user what menus are available
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
@@ -91,7 +95,7 @@ int main(){
 			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 		}
 
-		int menuInput = 0; //variable for deciding which menu to display - so that options don't get confused by only using "input"
+		menuInput = 0; 
 		if (input == "1") {
 			menuInput = 1;
 		} 
@@ -117,7 +121,7 @@ int main(){
 				cin >> input;
 				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 			}
-			int mainsInput = 0;
+			mainsInput = 0;
 			if (input == "1") {
 				mainsInput = 1;
 			}
@@ -128,7 +132,8 @@ int main(){
 			while (mainsInput == 1) {
 				cout << "In the menu, there are numbers listed next to all the dishes. \n";
 				cout << "Please enter the number of the dish you would like to add to your order: ";
-
+				cin.ignore(20, char);
+				cin >> dishNum;
 			}
 		}
 
