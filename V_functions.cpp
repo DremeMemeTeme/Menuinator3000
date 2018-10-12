@@ -8,7 +8,8 @@ extern void displayDrinks(int drinksSize, string drinksArray[], double drinksPri
 extern void displayDessert(int dessertSize, string dessertArray[], double dessertPriceArray[]);
 extern void displayError();
 
-
+/*-----------------------------------------------------------
+[ OLD MAIN ]
 int main(){
 
 	string mainsMenu[] = {"Salad", "Chips", "Pasta", "Nachos", "GarlicBread"};
@@ -52,5 +53,17 @@ int main(){
 		displayError();
 	}
 }
+
+-----------------------------------------------------------------------*/
+
+int main(){
+
+
+}
+
+
+
+
+
 
 

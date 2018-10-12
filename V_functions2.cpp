@@ -13,8 +13,9 @@ void displayOptions()
 	cout <<"(3) Desserts Menu" << '\n';
 }
 
+
 //DISPLAYS MAIN MENU
-void displayMain(int mainSize, string menuArray[], double menuPriceArray[])
+void displayMain(int mainSize, menu mainsMenu);
 {
 	int size = mainSize; //size corresponds to the number of items in both menu and price array
 
@@ -25,6 +26,8 @@ void displayMain(int mainSize, string menuArray[], double menuPriceArray[])
 		}	
 }
 
+
+/*
 //DISPLAYS DRINKS MENU
 void displayDrinks(int drinksSize, string drinksArray[], double drinksPriceArray[])
 {
@@ -53,3 +56,5 @@ void displayError() //display error message
 {
 	cout << "Please enter a valid number" << '\n';
 }
+
+*/
