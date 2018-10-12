@@ -19,6 +19,7 @@ menu::menu(std::string menuTitle, std::string itemType, int MAXitems)
 	menuName = menuTitle;
 	maxItems = MAXitems; 
 	dishType = itemType;
+	dishCount = 0;
 
 }
 
@@ -39,6 +40,10 @@ string menu::getMenuName() {
 
 int menu::getMax(){
 	return maxItems;
+}
+
+int menu::getDishCount() {
+	return dishCount;
 }
 
 void menu::setName(string newName){

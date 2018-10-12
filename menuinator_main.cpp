@@ -70,6 +70,8 @@ int main(){
 
 	string input = "0"; //initializing customer input variable
 
+	int dishNum; //initializing 
+
 	while (strcasecmp(input.c_str(), "quit".c_str()) != 0) { //using strcasecmp so case insensitive
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
@@ -123,7 +125,11 @@ int main(){
 				mainsInput = 2;
 			}
 
-			while (mainsInput == 1)
+			while (mainsInput == 1) {
+				cout << "In the menu, there are numbers listed next to all the dishes. \n";
+				cout << "Please enter the number of the dish you would like to add to your order: ";
+
+			}
 		}
 
 		while (menuInput == "2") {

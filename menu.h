@@ -25,6 +25,7 @@ public:
 	std::string getDishName(int i);  
 	std::string getMenuName();
 	int getMax();  //max number of dishes you can add to menu 
+	int getDishCount(); //returns current number of dishes in the menu
 
 	//setter
 	void setName(std::string newName); //gives a menu name to main, desserts, dinks menu
