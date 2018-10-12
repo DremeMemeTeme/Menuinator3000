@@ -122,6 +122,8 @@ int main(){
 			if (input == "2") {
 				mainsInput = 2;
 			}
+
+			while (mainsInput == 1)
 		}
 
 		while (menuInput == "2") {

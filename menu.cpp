@@ -29,7 +29,11 @@ void menu::addDish(dish * foodtoAdd){
 	}
 }
 
-string menu::getDishName(){
+string menu::getDishName(int i){
+	return dishArray[i]->getName();
+}
+
+string menu::getMenuName() {
 	return menuName;
 }
 
@@ -37,7 +41,7 @@ int menu::getMax(){
 	return maxItems;
 }
 
-void setName(string newName){
+void menu::setName(string newName){
 	menuName = newName;
 }
 

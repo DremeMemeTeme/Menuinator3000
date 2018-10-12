@@ -22,7 +22,8 @@ public:
 	void addDish(dish food); //add main,drinks,dessert objects into menu 
 
 	//getter
-	std::string getDishName();  
+	std::string getDishName(int i);  
+	std::string getMenuName();
 	int getMax();  //max number of dishes you can add to menu 
 
 	//setter
