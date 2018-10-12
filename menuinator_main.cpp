@@ -70,6 +70,26 @@ int main(){
 
 	while (input != "quit") { //we can use "quit" or some other appropriate variable to cancel the whole order
 		//prompting for user input goes here
+		//eg cout << "what would you like to do?" etc
+		while (input == "1") {
+			//looping for first option
+
+			//prompt again, using input variable
+		}
+
+		while (input == "2") {
+			//looping for second option
+
+			//prompt again, using input variable
+		}
+
+		while (input == "3") {
+			//looping for third option
+
+			//prompt again, using input variable
+		}
+
+		
 	}
 
 
