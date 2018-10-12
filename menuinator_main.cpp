@@ -16,7 +16,7 @@ extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentD
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
 extern void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost);
 extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes);
-extern void displayInputError(string input, int maxNumOptions);
+extern bool displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
 
@@ -71,28 +71,66 @@ int main(){
 	string input = "0"; //initializing customer input variable
 
 	while (strcasecmp(input.c_str(), "quit".c_str()) != 0) { //using strcasecmp so case insensitive
+		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
 		cout << "(1) Mains Menu\n";
-		cout << "(2) Dessert Menu\n";
-		cout << "(3) Drinks Menu\n";
+		cout << "(2) Drinks Menu\n";
+		cout << "(3) Dessert Menu\n";
 		cout << "Please enter the number of the menu you would like to look at: ";
+		*/
+		displayOptions(); //calling this shows user what menus are available
+		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
-		
-		int maxNumOptions = 3; //or however many
-		displayInputError(input, maxNumOptions);
-		while (input == "1") {
-			//Display mains menu
 
-			//prompt again, using input variable
+		int maxNumOptions = 3;
+		bool inputError = displayInputError(input, maxNumOptions); 
+		while ( inputError == true) {
+			cin >> input;
+			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 		}
 
-		while (input == "2") {
+		int menuInput = 0; //variable for deciding which menu to display - so that options don't get confused by only using "input"
+		if (input == "1") {
+			menuInput = 1;
+		} 
+		if (input == "2") {
+			menuInput = 2;
+		} 
+		if (input == "3") {
+			menuInput = 3;
+		} 
+
+		while (menuInput == "1") {
+			//Display mains menu function
+			cout << "What would you like to do next?\n";
+			cout << "Please enter a number: \n";
+			cout << "(1) Add dish to order\n";
+			cout << "(2) Look at a different menu\n";
+			cout << "Type 'quit' at any time to exit the program\n";
+			cin >> input;
+			maxNumOptions = 2;
+			inputError = displayInputError(input, maxNumOptions);
+
+			while ( inputError == true) {
+				cin >> input;
+				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
+			}
+			int mainsInput = 0;
+			if (input == "1") {
+				mainsInput = 1;
+			}
+			if (input == "2") {
+				mainsInput = 2;
+			}
+		}
+
+		while (menuInput == "2") {
 			//looping for second option
 
 			//prompt again, using input variable
 		}
 
-		while (input == "3") {
+		while (menuInput == "3") {
 			//looping for third option
 
 			//prompt again, using input variable
@@ -103,7 +141,7 @@ int main(){
 
 	}
 
-	displayOptions(); //calling this jsut shows the user what menus are available
+	//displayOptions(); //calling this jsut shows the user what menus are available
 	
 	delete[] orderArray;
 	delete[] dishSizes;

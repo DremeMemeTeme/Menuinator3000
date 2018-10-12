@@ -104,9 +104,10 @@ void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost
 	//cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too
 }
 
-void displayInputError(string input, int maxNumOptions) {
+bool displayInputError(string input, int maxNumOptions) {
 	if (input[0] - '0' < 1 || input[0] -'0' > maxNumOptions) {
-			cout << "Invalid input! Please enter a number between 1 and " << maxNumOptions << ": ";
-			cin >> input;
-		}
+		cout << "Invalid input! Please enter a number between 1 and " << maxNumOptions << ": ";
+		return true;
+	}
+	return false;
 }
