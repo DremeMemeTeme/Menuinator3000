@@ -15,7 +15,7 @@ extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double to
 int main() {
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
 	mains sandwich = mains("Sandwich", 7.9, "gluten, dairy", 4.50, false);
-	mains curry = mains("Vindaloo", 18.9, "no allergens", 15.8, true);
+	mains curry = mains("Vindaloo", 18.9, "n/a", 15.8, true);
 	mains salad = mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
 	mains pasta = mains ("Creamy Fettucine", 18.9, "gluten, dairy", 15.9, false);
 

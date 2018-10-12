@@ -16,6 +16,7 @@ extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentD
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
 extern void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost);
 extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes);
+extern void displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
 
@@ -69,11 +70,18 @@ int main(){
 
 	string input = "0"; //initializing customer input variable
 
-	while (input != "quit") { //we can use "quit" or some other appropriate variable to cancel the whole order
-		//prompting for user input goes here
-		//eg cout << "what would you like to do?" etc
+	while (strcasecmp(input.c_str(), "quit".c_str()) != 0) { //using strcasecmp so case insensitive
+		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
+		cout << "(1) Mains Menu\n";
+		cout << "(2) Dessert Menu\n";
+		cout << "(3) Drinks Menu\n";
+		cout << "Please enter the number of the menu you would like to look at: ";
+		cin >> input;
+		
+		int maxNumOptions = 3; //or however many
+		displayInputError(input, maxNumOptions);
 		while (input == "1") {
-			//looping for first option
+			//Display mains menu
 
 			//prompt again, using input variable
 		}
@@ -90,7 +98,9 @@ int main(){
 			//prompt again, using input variable
 		}
 
-		
+		// ....
+
+
 	}
 
 	displayOptions(); //calling this jsut shows the user what menus are available
