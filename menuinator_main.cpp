@@ -17,6 +17,7 @@ extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double to
 extern void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost);
 extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes);
 //extern displayMenu functions here
+extern void displayOptions();
 
 
 int main(){
@@ -31,8 +32,8 @@ int main(){
 	//desserts:
 	dessert choc_cake = dessert("Chocolate Cake", 5.50, "egg, gluten & dairy", "sweet");
 	dessert citrus_tart = dessert("Citrus Tart", 5.50, "egg & gluten", "very sweet");
-
 	//drinks:
+
 	drink white = drink("House White", 6.40, 25.0, "Creamy Fettucine");
 	drink red = drink("House Red", 6.40, 25.0, "Vindaloo");
 
@@ -92,9 +93,8 @@ int main(){
 		
 	}
 
-
-
-
+	displayOptions(); //calling this jsut shows the user what menus are available
+	
 	delete[] orderArray;
 	delete[] dishSizes;
 	//delete any other memory allocated by new
