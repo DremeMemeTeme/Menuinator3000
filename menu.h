@@ -9,23 +9,23 @@ class menu
 	//variables
 	//dish ** dishArray;  //object arrays declared in subclasses bc need to hold specific objects
 	std::string menuName; 
-	int maxItems; //max number of dishes you can add to menu (not order)
+	//int maxItems; //max number of dishes you can add to menu (not order) - included in subclasses now
 	//std::string dishType; - commented out since adding subclasses
-	int dishCount;
+	//int dishCount;
 
 public: 
 	//constructor
 	menu();
-	menu(std::string menuTitle, int numOfItems);
+	menu(std::string menuTitle);
 
 	//behaviour
-	virtual void addDish(dish * food) = 0; //pure virtual - each subclass has a different function for this
+	//virtual void addDish(dish * food) = 0; // - each subclass has a different function for this. Have to declare in subclasses
 
 	//getter
 	//std::string getDishName(int i);  -> moved to subclasses
 	std::string getMenuName();
-	int getMax();  //max number of dishes you can add to menu 
-	int getDishCount(); //returns current number of dishes in the menu
+	//int getMax();  //max number of dishes you can add to menu 
+	//getDishCount moved to subclasses
 	//dish * getMenuItem(int i); //returns a pointer to a food item in the menu - will be included in subclasses
 
 	//setter

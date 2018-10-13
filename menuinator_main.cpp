@@ -7,10 +7,11 @@
 #include "dessert.h"
 #include "drink.h"
 #include "menu.h"
+#include "mainsmenu.h"
 
 using namespace std;
 
-extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes);
+extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, string size, int * dishSizes);
 extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes);
 extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
 extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
@@ -39,15 +40,16 @@ int main(){
 	drink red = drink("House Red", 6.40, 25.0, "Vindaloo");
 
 	//creating & intitializing menus
-	menu mainsMenu = menu("Mains Menu", "mains", 20);
+	mainsmenu mainsMenu = mainsmenu("Mains Menu", 20);
 	//--------------------
-	mainsMenu.addDish(&spag);
-	mainsMenu.addDish(&sandwich);
-	mainsMenu.addDish(&curry);
-	mainsMenu.addDish(&salad);
-	mainsMenu.addDish(&pasta);
+	mainsMenu.addDish(spag);
+	mainsMenu.addDish(sandwich);
+	mainsMenu.addDish(curry);
+	mainsMenu.addDish(salad);
+	mainsMenu.addDish(pasta);
 	//--------------------
 
+	/*
 	menu dessertMenu = menu("Dessert Menu", "dessert", 15);
 	//--------------------
 	dessertMenu.addDish(&choc_cake);
@@ -59,6 +61,7 @@ int main(){
 	drinkMenu.addDish(&white);
 	drinkMenu.addDish(&red);
 	//--------------------
+	*/ //commented out until these subclasses done!
 
 	//creating order array
 	int maxDishes = 20; //max dishes that customer can order
@@ -84,7 +87,7 @@ int main(){
 		int menuInput; //variable for deciding which menu to display - so that options don't get confused by only using "input"
 		int mainsInput; 
 		int dishIndex; //variable for the index of the dish to be added in the menu array
-		mains * addedMains; //pointer to mains dish that user wants to add to order
+		mains addedMains; //mains dish that user wants to add to order
 		string size; //stores the size of the dish (eg entree vs mains)
 
 		displayOptions(); //calling this shows user what menus are available
@@ -130,6 +133,7 @@ int main(){
 			}
 			if (input == "2") {
 				mainsInput = 2;
+				menuInput = 0; //hopefully will exit the loop?
 				return 0; //just testing first option at the moment
 			}
 
@@ -154,8 +158,8 @@ int main(){
 				} 
 
 				dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
-				addedMains = mainsMenu.getMenuItem(dishIndex);
-				addMains(orderArray, &currentDishes, addedMains, &totalCost, size[0], dishSizes);
+				addedMains = mainsMenu.getMainsMenuItem(dishIndex);
+				addMains(orderArray, &currentDishes, &addedMains, &totalCost, size, dishSizes);
 
 				//prompt for next action:
 				cout << "What would you like to do next?\n";

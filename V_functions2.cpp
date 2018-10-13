@@ -3,6 +3,7 @@
 using namespace std;
 #include "menu.h"
 #include "mains.h"
+#include "mainsmenu.h"
 
 //DISPLAYS WHAT MENU YOU WANT TO VIEW
 void displayOptions()
@@ -16,7 +17,7 @@ void displayOptions()
 
 
 //DISPLAYS MAIN MENU
-void displayMain(int mainSize, menu mainsMenu)
+void displayMain(int mainSize, mainsmenu mainsMenu)
 {
 	int size = mainSize; //size corresponds to the number of items in both menu and price array
 
