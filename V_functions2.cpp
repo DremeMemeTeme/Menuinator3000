@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+#include "menu.h"
+#include "mains.h"
 
 //DISPLAYS WHAT MENU YOU WANT TO VIEW
 void displayOptions()
@@ -22,9 +23,13 @@ void displayMain(int mainSize, menu mainsMenu);
 		cout << "HERE IS OUR MAINS MENU:" << '\n';
 		for(int i=0; i<size; i++)
 		{
-			cout << menuArray[i] << "....." << "$ " << menuPriceArray[i] << '\n';
+			cout << "(" << i+1 << ")" << mains.getDishName(i) << "....." << "$ " << mains.getDiffPrice(i) << '\n'; 
 		}	
 }
+
+
+
+
 
 
 /*

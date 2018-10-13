@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <string>
 using namespace std;
@@ -8,7 +9,7 @@ extern void displayDrinks(int drinksSize, string drinksArray[], double drinksPri
 extern void displayDessert(int dessertSize, string dessertArray[], double dessertPriceArray[]);
 extern void displayError();
 
-/*-----------------------------------------------------------
+-----------------------------------------------------------
 [ OLD MAIN ]
 int main(){
 
@@ -55,13 +56,44 @@ int main(){
 }
 
 -----------------------------------------------------------------------*/
+#include <string>
+#include <iostream>
+
+#include <string.h>
+#include "dish.h"
+#include "mains.h"
+#include "dessert.h"
+#include "drink.h"
+#include "menu.h"
+
+using namespace std;
+
+extern void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, char size, int * dishSizes);
+extern void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes);
+extern int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes);
+extern void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost, int * dishSizes);
+extern void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost);
+extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, char size, int * dishSizes);
+extern bool displayInputError(string input, int maxNumOptions);
+//extern displayMenu functions here
+extern void displayOptions();
+extern void displayMain(int mainSize, menu mainsMenu);
+
 
 int main(){
+	//some example dish objects created here:
+	//mains:
+	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
+	mains sandwich = mains("Sandwich", 7.9, "gluten, dairy", 4.50, false);
+	mains curry = mains("Vindaloo", 18.9, "no allergens", 15.8, true);
+	mains salad = mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
+	mains pasta = mains ("Creamy Fettucine", 18.9, "gluten, dairy", 15.9, false);
+
+	displayMain(5, menu mainsMenu); 
+	//just trying to test this funciton here with these objects
 
 
 }
-
-
 
 
 
