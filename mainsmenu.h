@@ -19,6 +19,8 @@ public:
 
 	//getters
 	void addDish(mains dish); //add mains to menu - because only adding mains objects, don't need to use pointers
+	//although I haven't decided yet if it would be easier to use pointers to keep it consistent with the order array.....
+	
 	mains getMainsMenuItem(int i); //function to access mains objects within the menu array
 	//void displayMainsMenu() //put the display menu function here! can display name, price, allergens etc in this function
 

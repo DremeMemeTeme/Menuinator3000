@@ -5,7 +5,7 @@
 using namespace std;
 
 menu::menu(){
-	 dish ** dishArray;
+	 //dish ** dishArray;
 	 menuName = "Generic Menu Name";
 	 maxItems = 10;
 	 //dishType = "Generic Food Item"; 
@@ -15,7 +15,7 @@ menu::menu(){
 
 menu::menu(std::string menuTitle, int MAXitems)
 {
-	dish ** dishArray = new dish * [MAXitems]; //array of dish pointers size of MAXitems
+	//dish ** dishArray = new dish * [MAXitems]; //array of dish pointers size of MAXitems
 	menuName = menuTitle;
 	maxItems = MAXitems; 
 	//dishType = itemType;
