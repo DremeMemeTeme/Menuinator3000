@@ -73,7 +73,10 @@ int main(){
 
 	string input = "0"; //initializing customer input variable
 
-	while (strcasecmp(input.c_str(), "quit") != 0) { //using strcasecmp so case insensitive
+	string exitInput = "quit";
+	int exitCondition = 1;
+
+	while (exitCondition != 0) { //using strcasecmp so case insensitive
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
 		cout << "(1) Mains Menu\n";
@@ -93,11 +96,13 @@ int main(){
 		displayOptions(); //calling this shows user what menus are available
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
+		exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 
 		int maxNumOptions = 3;
 		bool inputError = displayInputError(input, maxNumOptions); 
 		while ( inputError == true) {
 			cin >> input;
+			exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 		}
 
@@ -120,11 +125,13 @@ int main(){
 			cout << "(2) Look at a different menu\n";
 			cout << "Type 'quit' at any time to exit the program\n";
 			cin >> input;
+			exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 			maxNumOptions = 2;
 			inputError = displayInputError(input, maxNumOptions);
 
 			while ( inputError == true) {
 				cin >> input;
+				exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 			}
 			mainsInput = 0;
@@ -134,16 +141,18 @@ int main(){
 			if (input == "2") {
 				mainsInput = 2;
 				menuInput = 0; //hopefully will exit the loop?
-				return 0; //just testing first option at the moment
+				//return 0; //just testing first option at the moment
 			}
 
 			while (mainsInput == 1) {
 				cout << "In the menu, there are numbers listed next to all the dishes. \n";
 				cout << "Please enter the number of the dish you would like to add to your order: ";
 				cin >> dishNum;
+				exitCondition = strcasecmp(dishNum.c_str(), exitInput.c_str());
 				inputError = displayInputError(dishNum, mainsMenu.getDishCount());
 				while(inputError == true) {
 					cin >> dishNum;
+					exitCondition = strcasecmp(dishNum.c_str(), exitInput.c_str());
 					inputError = displayInputError(dishNum, mainsMenu.getDishCount());
 				}
 				//asking whether they would like entree or main:
@@ -151,10 +160,12 @@ int main(){
 				cout << "Please enter the number corresponding to the size you would like to order:\n";
 				cout << "(1) Main\n" << "(2) Entree\n";
 				cin >> size;
+				exitCondition = strcasecmp(size.c_str(), exitInput.c_str());
 	
 				while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 					cout << "That is not a valid number! Please enter either 1 or 2: ";
 					cin >> size;
+					exitCondition = strcasecmp(size.c_str(), exitInput.c_str());
 				} 
 
 				dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
@@ -168,11 +179,13 @@ int main(){
 				cout << "(2) Look at a different menu\n";
 				cout << "Type 'quit' at any time to exit the program\n";
 				cin >> input;
+				exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 				maxNumOptions = 2;
 				inputError = displayInputError(input, maxNumOptions);
 
 				while ( inputError == true) {
 					cin >> input;
+					exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 					inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 				}
 
@@ -182,6 +195,8 @@ int main(){
 				}
 				if (input == "2") {
 					mainsInput = 2;
+					menuInput = 0; //hopefully will exit the loop?
+					//return 0; //bc just testing first option
 				}
 			}
 		}
