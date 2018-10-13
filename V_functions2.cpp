@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "menu.h"
 using namespace std;
 
 
@@ -15,15 +16,17 @@ void displayOptions()
 
 
 //DISPLAYS MAIN MENU
-void displayMain(int mainSize, menu mainsMenu);
+void displayMain(int mainSize, menu mainsMenu)
 {
 	int size = mainSize; //size corresponds to the number of items in both menu and price array
 
 		cout << "HERE IS OUR MAINS MENU:" << '\n';
+		/*
 		for(int i=0; i<size; i++)
 		{
 			cout << menuArray[i] << "....." << "$ " << menuPriceArray[i] << '\n';
 		}	
+		*/ //commented out for testing purposes - since it's not quite finished yet!
 }
 
 
