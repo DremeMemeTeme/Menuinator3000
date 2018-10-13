@@ -70,9 +70,7 @@ int main(){
 
 	string input = "0"; //initializing customer input variable
 
-	int dishNum; //initializing 
-
-	while (strcasecmp(input.c_str(), "quit".c_str()) != 0) { //using strcasecmp so case insensitive
+	while (strcasecmp(input.c_str(), "quit") != 0) { //using strcasecmp so case insensitive
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
 		cout << "(1) Mains Menu\n";
@@ -80,6 +78,15 @@ int main(){
 		cout << "(3) Dessert Menu\n";
 		cout << "Please enter the number of the menu you would like to look at: ";
 		*/
+
+		//declaring all variables used within the following while loops here:
+		string dishNum; //initializing "add dish" number variable - declared as a string to cope with possible char input
+		int menuInput; //variable for deciding which menu to display - so that options don't get confused by only using "input"
+		int mainsInput; 
+		int dishIndex; //variable for the index of the dish to be added in the menu array
+		mains * addedMains; //pointer to mains dish that user wants to add to order
+		string size; //stores the size of the dish (eg entree vs mains)
+
 		displayOptions(); //calling this shows user what menus are available
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
@@ -91,7 +98,7 @@ int main(){
 			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 		}
 
-		int menuInput = 0; //variable for deciding which menu to display - so that options don't get confused by only using "input"
+		menuInput = 0; 
 		if (input == "1") {
 			menuInput = 1;
 		} 
@@ -102,7 +109,7 @@ int main(){
 			menuInput = 3;
 		} 
 
-		while (menuInput == "1") {
+		while (menuInput == 1) {
 			//Display mains menu function
 			cout << "What would you like to do next?\n";
 			cout << "Please enter a number: \n";
@@ -117,30 +124,73 @@ int main(){
 				cin >> input;
 				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 			}
-			int mainsInput = 0;
+			mainsInput = 0;
 			if (input == "1") {
 				mainsInput = 1;
 			}
 			if (input == "2") {
 				mainsInput = 2;
+				return 0; //just testing first option at the moment
 			}
 
 			while (mainsInput == 1) {
 				cout << "In the menu, there are numbers listed next to all the dishes. \n";
 				cout << "Please enter the number of the dish you would like to add to your order: ";
+				cin >> dishNum;
+				inputError = displayInputError(dishNum, mainsMenu.getDishCount());
+				while(inputError == true) {
+					cin >> dishNum;
+					inputError = displayInputError(dishNum, mainsMenu.getDishCount());
+				}
+				//asking whether they would like entree or main:
+				size = "0";
+				cout << "Please enter the number corresponding to the size you would like to order:\n";
+				cout << "(1) Main\n" << "(2) Entree\n";
+				cin >> size;
+	
+				while (size[0] - '0' < 1 || size[0] - '0' > 2) {
+					cout << "That is not a valid number! Please enter either 1 or 2: ";
+					cin >> size;
+				} 
 
+				dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
+				addedMains = mainsMenu.getMenuItem(dishIndex);
+				addMains(orderArray, &currentDishes, addedMains, &totalCost, size[0], dishSizes);
+
+				//prompt for next action:
+				cout << "What would you like to do next?\n";
+				cout << "Please enter a number: \n";
+				cout << "(1) Add dish to order\n";
+				cout << "(2) Look at a different menu\n";
+				cout << "Type 'quit' at any time to exit the program\n";
+				cin >> input;
+				maxNumOptions = 2;
+				inputError = displayInputError(input, maxNumOptions);
+
+				while ( inputError == true) {
+					cin >> input;
+					inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
+				}
+
+				mainsInput = 0;
+				if (input == "1") {
+					mainsInput = 1;
+				}
+				if (input == "2") {
+					mainsInput = 2;
+				}
 			}
 		}
 
-		while (menuInput == "2") {
+		while (menuInput == 2) {
 			//looping for second option
-
+			return 0; //just testing first option at the moment
 			//prompt again, using input variable
 		}
 
-		while (menuInput == "3") {
+		while (menuInput == 3) {
 			//looping for third option
-
+			return 0; //just testing first option at the moment
 			//prompt again, using input variable
 		}
 

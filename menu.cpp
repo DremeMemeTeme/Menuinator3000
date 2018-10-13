@@ -25,7 +25,7 @@ menu::menu(std::string menuTitle, std::string itemType, int MAXitems)
 
 void menu::addDish(dish * foodtoAdd){
 	if(dishCount < maxItems){
-		dishArray[dishCount] = *foodtoAdd;
+		dishArray[dishCount] = foodtoAdd;
 		dishCount++;
 	}
 }
@@ -44,6 +44,10 @@ int menu::getMax(){
 
 int menu::getDishCount() {
 	return dishCount;
+}
+
+dish * menu::getMenuItem(int i) { //returns a pointer to a food item in the menu
+	return dishArray[i];
 }
 
 void menu::setName(string newName){
