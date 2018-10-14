@@ -13,7 +13,7 @@ mainsmenu::mainsmenu() : menu() {
 	dishCount = 0;
 	//maxItems initialized in menu()
 }
-
+//do we need this std:: before the string here? I'm scared to remove it incase it makes it stop working ...
 mainsmenu::mainsmenu(std::string menuTitle, int numOfItems) : menu(menuTitle) {
 	maxItems = numOfItems;
 	mainsArray = new mains[maxItems];
