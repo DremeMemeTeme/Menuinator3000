@@ -111,3 +111,14 @@ bool displayInputError(string input, int maxNumOptions) {
 	}
 	return false;
 }
+
+bool quitCondition(string input) {
+	string exitInput = "quit";
+	int exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+
+	if (exitCondition == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}

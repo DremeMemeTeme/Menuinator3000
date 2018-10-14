@@ -22,6 +22,7 @@ extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, dou
 extern bool displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
+extern bool quitCondition(string input);
 
 
 int main(){
@@ -77,10 +78,11 @@ int main(){
 
 	string exitInput = "quit";
 	int exitCondition = 1;
+	//bool quitCondition = false;
 
 	cout << "Welcome to the Menuinator 3000!\n\n";
 
-	while (exitCondition != 0) { //using strcasecmp so case insensitive
+	while (exitCondition != 0) { //may or may not work having this loop
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
 		cout << "(1) Mains Menu\n";
@@ -100,15 +102,19 @@ int main(){
 		displayOptions(); //calling this shows user what menus are available
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
-		exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
-
-		cout << "ExitCondition: " << exitCondition; //for debugging purposes
+		if (quitCondition(input) == true) {
+			//display goodbye message function? or include this in quitCondition function?
+			return 0;
+		}
 
 		int maxNumOptions = 3;
 		bool inputError = displayInputError(input, maxNumOptions); 
 		while ( inputError == true) {
 			cin >> input;
-			exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+			if (quitCondition(input) == true) {
+				//display goodbye message function? or include this in quitCondition function?
+				return 0;
+			}
 			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 		}
 
@@ -131,13 +137,19 @@ int main(){
 			cout << "(2) Look at a different menu\n";
 			cout << "Type 'quit' at any time to exit the program\n";
 			cin >> input;
-			exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+			if (quitCondition(input) == true) {
+				//display goodbye message function? or include this in quitCondition function?
+				return 0;
+			}
 			maxNumOptions = 2;
 			inputError = displayInputError(input, maxNumOptions);
 
 			while ( inputError == true) {
 				cin >> input;
-				exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+				if (quitCondition(input) == true) {
+					//display goodbye message function? or include this in quitCondition function?
+					return 0;
+				}
 				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 			}
 			mainsInput = 0;
@@ -154,11 +166,17 @@ int main(){
 				cout << "\nIn the menu, there are numbers listed next to all the dishes. \n";
 				cout << "Please enter the number of the dish you would like to add to your order: ";
 				cin >> dishNum;
-				exitCondition = strcasecmp(dishNum.c_str(), exitInput.c_str());
+				if (quitCondition(input) == true) {
+					//display goodbye message function? or include this in quitCondition function?
+					return 0;
+				}
 				inputError = displayInputError(dishNum, mainsMenu.getDishCount());
 				while(inputError == true) {
 					cin >> dishNum;
-					exitCondition = strcasecmp(dishNum.c_str(), exitInput.c_str());
+					if (quitCondition(input) == true) {
+						//display goodbye message function? or include this in quitCondition function?
+						return 0;
+					}
 					inputError = displayInputError(dishNum, mainsMenu.getDishCount());
 				}
 				//asking whether they would like entree or main:
@@ -166,12 +184,18 @@ int main(){
 				cout << "Please enter the number corresponding to the size you would like to order:\n";
 				cout << "(1) Main\n" << "(2) Entree\n";
 				cin >> size;
-				exitCondition = strcasecmp(size.c_str(), exitInput.c_str());
+				if (quitCondition(input) == true) {
+					//display goodbye message function? or include this in quitCondition function?
+					return 0;
+				}
 	
 				while (size[0] - '0' < 1 || size[0] - '0' > 2) {
 					cout << "That is not a valid number! Please enter either 1 or 2: ";
 					cin >> size;
-					exitCondition = strcasecmp(size.c_str(), exitInput.c_str());
+					if (quitCondition(input) == true) {
+						//display goodbye message function? or include this in quitCondition function?
+						return 0;
+					}
 				} 
 
 				dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
@@ -185,17 +209,23 @@ int main(){
 				cout << "(2) Look at a different menu\n";
 				cout << "Type 'quit' at any time to exit the program\n";
 				cin >> input;
-				exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+				if (quitCondition(input) == true) {
+					//display goodbye message function? or include this in quitCondition function?
+					return 0;
+				}
 				maxNumOptions = 2;
 				inputError = displayInputError(input, maxNumOptions);
 
 				while ( inputError == true) {
 					cin >> input;
-					exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+					if (quitCondition(input) == true) {
+						//display goodbye message function? or include this in quitCondition function?
+						return 0;
+					}
 					inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
 				}
 
-				mainsInput = 0;
+				//mainsInput = 0;
 				if (input == "1") {
 					mainsInput = 1;
 				}
