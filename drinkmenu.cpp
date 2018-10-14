@@ -14,7 +14,7 @@ drinkmenu::drinkmenu() : menu() {
 }
 
 drinkmenu::drinkmenu(string menuTitle, int numOfDrinkItems) : menu(menuTitle) {
-	maxDrinkItems = numOfItems;
+	maxDrinkItems = numOfDrinkItems;
 	drinkArray = new drink[maxDrinkItems];
 	drinkDishCount = 0;
 }
@@ -26,7 +26,7 @@ void drinkmenu::addDish(drink dish) {
 	}
 }
 
-desserts drinkmenu::getDrinkMenuItem(int i) {
+drink drinkmenu::getDrinkMenuItem(int i) {
 	return drinkArray[i];
 }
 

@@ -14,22 +14,22 @@ class dessertsmenu : public menu {
 
 public:
 	//default constructor
-	dessertmenu();
+	dessertsmenu();
 
 	//constructor taking arguments
-	dessertmenu(std::string menuTitle, int numOfDessertItems);
+	dessertsmenu(std::string menuTitle, int numOfDessertItems);
 
 	//getters
-	desserts getDessertMenuitem(int i); //function to access desserts objects within the menu array
+	dessert getDessertsMenuItem(int i); //function to access desserts objects within the menu array
 	int getMax(); //returns max items for menu
 	int getDishCount(); //returns current number of dishes in the menu
 
 	//void displayDessertsMenu()  //put displaydessert() from V_functions2.cpp here when it's finished?
 
-	void addDish(desserts dish);  //adds desserts to the menu
+	void addDish(dessert dish);  //adds desserts to the menu
 
 	//default deconstrucotor
-	~dessertmenu();
+	~dessertsmenu();
 };
 
 #endif

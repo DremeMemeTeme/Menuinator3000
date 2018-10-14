@@ -9,24 +9,24 @@ using namespace std;
 
 dessertsmenu::dessertsmenu() : menu() {
 	maxDessertItems = 10;
-	dessertsArray = new desserts[maxDessertItems];
+	dessertsArray = new dessert[maxDessertItems];
 	dessertDishCount = 0;
 }
 
 dessertsmenu::dessertsmenu(string menuTitle, int numOfDessertItems) : menu(menuTitle) {
-	maxItems = numOfItems;
-	dessertsArray = new desserts[maxDessertItems];
-	dishCount = 0;
+	maxDessertItems = numOfDessertItems;
+	dessertsArray = new dessert[maxDessertItems];
+	dessertDishCount = 0;
 }
 
-void dessertsmenu::addDish(desserts dish) {
+void dessertsmenu::addDish(dessert dish) {
 	if(dessertDishCount < maxDessertItems){
 		dessertsArray[dessertDishCount] = dish;
 		dessertDishCount++;
 	}
 }
 
-desserts dessertsmenu::getDessertsMenuItem(int i) {
+dessert dessertsmenu::getDessertsMenuItem(int i) {
 	return dessertsArray[i];
 }
 

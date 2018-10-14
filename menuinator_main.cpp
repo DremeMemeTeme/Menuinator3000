@@ -8,6 +8,8 @@
 #include "drink.h"
 #include "menu.h"
 #include "mainsmenu.h"
+#include "dessertsmenu.h"
+#include "drinkmenu.h"
 
 using namespace std;
 
@@ -76,6 +78,8 @@ int main(){
 	string exitInput = "quit";
 	int exitCondition = 1;
 
+	cout << "Welcome to the Menuinator 3000!\n\n";
+
 	while (exitCondition != 0) { //using strcasecmp so case insensitive
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
@@ -97,6 +101,8 @@ int main(){
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
 		exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
+
+		cout << "ExitCondition: " << exitCondition; //for debugging purposes
 
 		int maxNumOptions = 3;
 		bool inputError = displayInputError(input, maxNumOptions); 
@@ -145,7 +151,7 @@ int main(){
 			}
 
 			while (mainsInput == 1) {
-				cout << "In the menu, there are numbers listed next to all the dishes. \n";
+				cout << "\nIn the menu, there are numbers listed next to all the dishes. \n";
 				cout << "Please enter the number of the dish you would like to add to your order: ";
 				cin >> dishNum;
 				exitCondition = strcasecmp(dishNum.c_str(), exitInput.c_str());
