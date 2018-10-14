@@ -8,7 +8,7 @@ using namespace std;
 //DISPLAYS WHAT MENU YOU WANT TO VIEW
 void displayOptions()
 {
-	cout <<"What would you like to look at?" << '\n';
+	cout <<"\nWhat would you like to look at?" << '\n';
 	cout <<"(Please enter the number of the menu you would like to look at)" << '\n';
 	cout <<"(1) Mains Menu" << '\n';
 	cout <<"(2) Drinks Menu" << '\n';

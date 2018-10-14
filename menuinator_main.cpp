@@ -80,7 +80,7 @@ int main(){
 	int exitCondition = 1;
 	//bool quitCondition = false;
 
-	cout << "Welcome to the Menuinator 3000!\n\n";
+	cout << "Welcome to the Menuinator 3000!\n";
 
 	while (exitCondition != 0) { //may or may not work having this loop
 		/*
@@ -131,7 +131,7 @@ int main(){
 
 		while (menuInput == 1) {
 			//Display mains menu function
-			cout << "What would you like to do next?\n";
+			cout << "\nWhat would you like to do next?\n";
 			cout << "Please enter a number: \n";
 			cout << "(1) Add dish to order\n";
 			cout << "(2) Look at a different menu\n";
@@ -231,8 +231,7 @@ int main(){
 				}
 				if (input == "2") {
 					mainsInput = 2;
-					menuInput = 0; //hopefully will exit the loop?
-					//return 0; //bc just testing first option
+					menuInput = 0; //hopefully will exit the loop - works!
 				}
 			}
 		}
