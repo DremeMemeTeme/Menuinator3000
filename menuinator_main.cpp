@@ -129,6 +129,8 @@ int main(){
 			menuInput = 3;
 		} 
 
+		//Bianca doing drink option, Vanessa doing dessert option
+
 		while (menuInput == 1) {
 			//Display mains menu function
 			cout << "\nWhat would you like to do next?\n";
