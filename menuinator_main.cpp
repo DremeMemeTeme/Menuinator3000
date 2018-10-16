@@ -137,13 +137,14 @@ int main(){
 			cout << "Please enter a number: \n";
 			cout << "(1) Add dish to order\n";
 			cout << "(2) Look at a different menu\n";
+			cout << "(3) Finalise order\n";
 			cout << "Type 'quit' at any time to exit the program\n";
 			cin >> input;
 			if (quitCondition(input) == true) {
 				//display goodbye message function? or include this in quitCondition function?
 				return 0;
 			}
-			maxNumOptions = 2;
+			maxNumOptions = 3;
 			inputError = displayInputError(input, maxNumOptions);
 
 			while ( inputError == true) {
@@ -162,6 +163,42 @@ int main(){
 				mainsInput = 2;
 				menuInput = 0; //hopefully will exit the loop?
 				//return 0; //just testing first option at the moment
+			}
+			if (input == "3") {
+				if (currentDishes == 0) {
+					cout << "\nPlease add some dishes to your order first!\n";
+					menuInput = 0; //go back to start
+				} else {
+					cout << "\nYour current order is: \n";
+					displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+					cout << "\nAre you sure you would like to finalise your order?\n";
+					cout << "(y) Yes\n";
+					cout << "(n) No\n";
+					cin >> input;
+					if (quitCondition(input) == true) {
+						//display goodbye message function? or include this in quitCondition function?
+						return 0;
+					}
+
+					while (input != "Y" && input != "y" && input != "N" && input != "n") {
+						cout << "Invalid input! Please enter either 'y' or 'n': ";
+						cin >> input;
+						if (quitCondition(input) == true) {
+							//display goodbye message function? or include this in quitCondition function?
+							return 0;
+						}
+					}
+
+					if (input == "y" || input == "Y") {
+						cout << "Thank you for using the Menu-inator 3000!\n";
+						cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+						return 0;
+					}
+
+					if (input == "n" || input == "N") {
+						menuInput = 0; //return to start
+					}
+				}
 			}
 
 			while (mainsInput == 1) {
@@ -209,13 +246,14 @@ int main(){
 				cout << "Please enter a number: \n";
 				cout << "(1) Add dish to order\n";
 				cout << "(2) Look at a different menu\n";
+				cout << "(3) Finalise order\n";
 				cout << "Type 'quit' at any time to exit the program\n";
 				cin >> input;
 				if (quitCondition(input) == true) {
 					//display goodbye message function? or include this in quitCondition function?
 					return 0;
 				}
-				maxNumOptions = 2;
+				maxNumOptions = 3;
 				inputError = displayInputError(input, maxNumOptions);
 
 				while ( inputError == true) {
@@ -229,7 +267,7 @@ int main(){
 
 				//mainsInput = 0;
 				if (input == "1") {
-					mainsInput = 1;
+					mainsInput = 1;    //acutally might not need this loop
 				}
 				if (input == "2") {
 					mainsInput = 2;
@@ -238,8 +276,9 @@ int main(){
 			}
 		}
 
-		while (menuInput == 2) {
-			//looping for second option
+		while (menuInput == 2) { //drinks menu
+			//display drinks menu function
+
 			return 0; //just testing first option at the moment
 			//prompt again, using input variable
 		}

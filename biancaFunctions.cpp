@@ -101,7 +101,7 @@ void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost
 		
 	}
 
-	//cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too
+	cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too
 }
 
 bool displayInputError(string input, int maxNumOptions) {
