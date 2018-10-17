@@ -11,7 +11,11 @@ using namespace std;
 
 //add dish function - will need to make a function for each subclasse since dish is an abstract class
 void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, string size, int * dishSizes) {
-	order[*currentDishes] = addedMains;
+	cout << "current dishes value: " << *currentDishes << " item adding "<< addedMains->getName()<< "\n";
+	int index = *currentDishes;
+	order[index] = addedMains;
+	cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
+
 	
 	switch (size[0] - '0') {
 			case 1: //ie main size
@@ -28,11 +32,13 @@ void addMains(dish ** order, int * currentDishes, mains * addedMains, double * t
 			*currentDishes = *currentDishes + 1;
 			break;
 		}
+		cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
 	cout << addedMains->getName() << " successfully added to order!\n"; 
 }
 
-void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost) {
+void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, double * totalCost, int * dishSizes) {
 	order[*currentDishes] = addedDessert;
+	dishSizes[*currentDishes] = 0; //since no alternative size for desserts
 	*currentDishes = *currentDishes + 1;
 	*totalCost = *totalCost + addedDessert->getPrice();
 	cout << addedDessert->getName() << " successfully added to order!\n";
@@ -58,10 +64,17 @@ void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * t
 }
 
 //cancel a specific dish function
-void cancelDish(dish ** order, int dishIndex, int * currentDishes, double dishCost, double * totalCost, int * dishSizes) {
+void cancelDish(dish ** order, int dishIndex, int * currentDishes, double * totalCost, int * dishSizes) {
 	int tempIndex = dishIndex; 
 	int remainder = *currentDishes - dishIndex; //number of remainder dishes after dish to be cancelled in the order array
-	
+	double dishCost;
+	if (dishSizes[dishIndex] == 1) {
+		//entree/bottle size
+		dishCost = order[dishIndex]->getDiffPrice(); 
+	} else {
+		//main size
+		dishCost = order[dishIndex]->getPrice();
+	}
 	//reshuffling the order array
 	int i;
 	for (i=0; i<remainder; i++) {
