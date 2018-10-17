@@ -20,7 +20,7 @@ public:
 	drinkmenu(std::string menuTitle, int numOfDrinkItems);
 
 	//getters
-	drink getDrinkMenuItem(int i); //function to access desserts objects within the menu array
+	drink * getDrinkMenuItem(int i); //function to access desserts objects within the menu array
 	int getMax();
 	int getDishCount(); 
 

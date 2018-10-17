@@ -26,8 +26,8 @@ void drinkmenu::addDish(drink dish) {
 	}
 }
 
-drink drinkmenu::getDrinkMenuItem(int i) {
-	return drinkArray[i];
+drink * drinkmenu::getDrinkMenuItem(int i) {
+	return &drinkArray[i];
 }
 
 int drinkmenu::getMax() {

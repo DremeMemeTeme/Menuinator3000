@@ -11,10 +11,10 @@ using namespace std;
 
 //add dish function - will need to make a function for each subclasse since dish is an abstract class
 void addMains(dish ** order, int * currentDishes, mains * addedMains, double * totalCost, string size, int * dishSizes) {
-	cout << "current dishes value: " << *currentDishes << " item adding "<< addedMains->getName()<< "\n";
+	//cout << "current dishes value: " << *currentDishes << " item adding "<< addedMains->getName()<< "\n";
 	int index = *currentDishes;
 	order[index] = addedMains;
-	cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
+	//cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
 
 	
 	switch (size[0] - '0') {
@@ -32,7 +32,7 @@ void addMains(dish ** order, int * currentDishes, mains * addedMains, double * t
 			*currentDishes = *currentDishes + 1;
 			break;
 		}
-		cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
+		//cout << "value at zeroth index " << order[0]->getName() << "\n"; //debugging
 	cout << addedMains->getName() << " successfully added to order!\n"; 
 }
 
@@ -46,7 +46,7 @@ void addDessert(dish ** order, int * currentDishes, dessert * addedDessert, doub
 
 void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * totalCost, string size, int * dishSizes) {
 	order[*currentDishes] = addedDrink;
-	*currentDishes = *currentDishes + 1;
+	
 	switch (size[0] - '0') {
 			case 1:
 			*totalCost = *totalCost + addedDrink->getPrice();
@@ -66,6 +66,7 @@ void addDrink(dish ** order, int * currentDishes, drink * addedDrink, double * t
 //cancel a specific dish function
 void cancelDish(dish ** order, int dishIndex, int * currentDishes, double * totalCost, int * dishSizes) {
 	int tempIndex = dishIndex; 
+	string dishName = order[*currentDishes-1]->getName();
 	int remainder = *currentDishes - dishIndex; //number of remainder dishes after dish to be cancelled in the order array
 	double dishCost;
 	if (dishSizes[dishIndex] == 1) {
@@ -85,14 +86,20 @@ void cancelDish(dish ** order, int dishIndex, int * currentDishes, double * tota
 
 	*currentDishes = *currentDishes - 1; //because deleted a dish
 	*totalCost = *totalCost - dishCost;
+
+	cout << dishName << " successfully removed from order! Your order is now: \n\n";
+
+	
 }
 
 //find a match between user input and item in order array
 int findDishInOrder(string inputtedName, dish ** orderArray, int currentDishes) {
 	int i;
+	//cout << "current Dishes: " << currentDishes << "\n";
 	for (i=0; i<currentDishes; i++) {
 		//if match found between user input and a dish name in the order array:
 		if (strcasecmp(inputtedName.c_str(), (orderArray[i]->getName()).c_str()) == 0) {
+			//cout << "dish index: " << i << "\n";
 			return i; //returns index of match in orderArray
 		}
 	}

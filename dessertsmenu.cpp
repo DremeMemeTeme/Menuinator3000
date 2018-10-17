@@ -26,8 +26,8 @@ void dessertsmenu::addDish(dessert dish) {
 	}
 }
 
-dessert dessertsmenu::getDessertsMenuItem(int i) {
-	return dessertsArray[i];
+dessert * dessertsmenu::getDessertsMenuItem(int i) {
+	return &dessertsArray[i];
 }
 
 int dessertsmenu::getMax() {
