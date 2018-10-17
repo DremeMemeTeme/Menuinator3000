@@ -21,7 +21,7 @@ public:
 
 
 	//getters
-	mains getMainsMenuItem(int i); //function to access mains objects within the menu array
+	mains * getMainsMenuItem(int i); //function to access mains objects within the menu array
 	int getMax(); //returns max items for menu - Had to put it in subclass bc otherwise it was difficult to access (since in private for menu class)
 	int getDishCount(); //returns current number of dishes in the menu
 

@@ -27,8 +27,8 @@ void mainsmenu::addDish(mains dish) {
 	}
 }
 
-mains mainsmenu::getMainsMenuItem(int i) {
-	return mainsArray[i];
+mains * mainsmenu::getMainsMenuItem(int i) {
+	return &mainsArray[i];
 }
 
 int mainsmenu::getMax() {
