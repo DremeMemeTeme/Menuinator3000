@@ -38,7 +38,7 @@ void displayMain(int mainSize, mains a)
 		}	
 }
 
-
+/*
 int main(){
 
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -69,6 +69,7 @@ int main(){
 	//delete[] mainsArray;
 	return 0;
 }
+*/
 
 
 
