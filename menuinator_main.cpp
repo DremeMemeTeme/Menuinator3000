@@ -147,7 +147,7 @@ int main(){
 				//display goodbye message function? or include this in quitCondition function?
 				return 0;
 			}
-			maxNumOptions = 4;
+			maxNumOptions = 5;
 			inputError = displayInputError(input, maxNumOptions);
 
 			while ( inputError == true) {
@@ -303,13 +303,14 @@ int main(){
 					cout << "(2) Look at a different menu\n";
 					cout << "(3) Finalise order\n";
 					cout << "(4) Cancel dish from order\n";
+					cout << "(5) Display current order\n";
 					cout << "Type 'quit' at any time to exit the program\n";
 					cin >> input;
 					if (quitCondition(input) == true) {
 						//display goodbye message function? or include this in quitCondition function?
 						return 0;
 					}
-					maxNumOptions = 4;
+					maxNumOptions = 5;
 					inputError = displayInputError(input, maxNumOptions);
 
 					while ( inputError == true) {
@@ -369,7 +370,7 @@ int main(){
 					}
 					if (input == "4") {
 						mainsInput = 4;
-							while (mainsInput == 4) {
+						while (mainsInput == 4) {
 							cout << "Please enter the name of the dish you want to remove from your order: \n";
 							cout << "(Type 'cancel' to go back to the menu selection screen)\n";
 							cin.ignore(100, '\n');
@@ -476,12 +477,12 @@ int main(){
 										}
 									}
 
-									if (input == "4") {
-										mainsInput = 4; //should go back through the loop
-									}
+								if (input == "4") {
+									mainsInput = 4; //should go back through the loop
 								}
-							}								
-						}
+							}
+						}								
+					}
 					}
 				}
 			}
