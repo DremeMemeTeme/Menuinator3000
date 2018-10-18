@@ -71,7 +71,7 @@ void displayDessert(dessertsmenu dessertsMenu)
 		".....$" << dessertsMenu.getDessertsMenuItem(i)->getPrice() << "\n";
 
 		cout << "   ➩ Contains: " << dessertsMenu.getDessertsMenuItem(i)->getInfo() << "\n";
-		cout << "   ➩ Sweetnes Level: " << dessertsMenu.getDessertsMenuItem(i)->howSweet() << "\n" << "\n";
+		cout << "   ➩ Sweetness Level: " << dessertsMenu.getDessertsMenuItem(i)->howSweet() << "\n" << "\n";
 	}
 		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
