@@ -118,14 +118,25 @@ int main(){
 	drinkMenu.addDish(red);
 	//--------------------
 
-	displayMain(mainsMenu);
-	displayDrinks(drinkMenu);
-	displayDessert(dessertsMenu);
 
+	displayOptions();
 
+	int userInput;
 
+	cin >> userInput;
 
+	if(userInput == 1){
+		displayMain(mainsMenu);
+	}
 
+	if(userInput == 2){
+		displayDrinks(drinkMenu);
+	}
+	if(userInput == 3){
+		displayDessert(dessertsMenu);
+	}
+	
+	
 	//delete[] mainsArray;
 	return 0;
 }
