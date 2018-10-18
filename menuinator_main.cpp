@@ -602,7 +602,7 @@ int main(){
 				}
 				if (input == "4") {
 					mainsInput = 4;
-						while (mainsInput == 4) {
+					while (mainsInput == 4) {
 						cout << "Please enter the name of the dish you want to remove from your order: \n";
 						cout << "(Type 'cancel' to go back to the menu selection screen)\n";
 						cin.ignore(100, '\n');
@@ -709,11 +709,12 @@ int main(){
 										menuInput = 0; //return to start
 									}
 								}
+							}
 
-								if (input == "4") {
-									mainsInput = 4; //should go back through the loop
-								}
-							}								
+							if (input == "4") {
+								mainsInput = 4; //should go back through the loop
+							}
+															
 						}
 					}
 				}

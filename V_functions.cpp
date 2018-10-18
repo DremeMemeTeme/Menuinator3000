@@ -80,6 +80,7 @@ extern void displayOptions();
 extern void displayMain(int mainSize, menu mainsMenu);
 
 
+/*
 int main(){
 	//some example dish objects created here:
 	//mains:
@@ -89,11 +90,11 @@ int main(){
 	mains salad = mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
 	mains pasta = mains ("Creamy Fettucine", 18.9, "gluten, dairy", 15.9, false);
 
-	displayMain(5, menu mainsMenu); 
+	//displayMain(5, menu mainsMenu); 
 	//just trying to test this funciton here with these objects
 
-
 }
+*/
 
 
 
