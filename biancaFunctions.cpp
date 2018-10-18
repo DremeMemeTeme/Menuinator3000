@@ -121,7 +121,7 @@ void displayCurrentOrder(dish ** orderArray, int currentDishes, double totalCost
 		
 	}
 
-	cout << "Your current total cost is $" << totalCost << "\n"; //could have this step in main too
+	cout << "\nYour current total cost is $" << totalCost << "\n\n"; //could have this step in main too
 }
 
 bool displayInputError(string input, int maxNumOptions) {
@@ -137,6 +137,7 @@ bool quitCondition(string input) {
 	int exitCondition = strcasecmp(input.c_str(), exitInput.c_str());
 
 	if (exitCondition == 0) {
+		cout << "Thanks for using the Menu-inator 3000! See you next time.\n";
 		return true;
 	} else {
 		return false;

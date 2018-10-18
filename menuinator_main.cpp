@@ -67,7 +67,7 @@ int main(){
 	
 
 	//creating order array
-	int maxDishes = 15; //max dishes that customer can order
+	int maxDishes = 40; //max dishes that customer can order - more than expect customer to order
 	dish ** orderArray = new dish * [maxDishes];
 	int * dishSizes = new int[maxDishes]; //array for storing the sizes of dishes ordered
 
@@ -88,6 +88,10 @@ int main(){
 	mains * addedMains; //mains dish that user wants to add to order
 	string size; //stores the size of the dish (eg entree vs mains)
 	drink * addedDrink; //drink that user wants to add to order
+	int drinkInput;
+	string cancelCondition = "cancel";
+	dessert * addedDessert;
+	int dessertInput; //replace mainsInput or drinkInput variables with this
 
 	cout << "Welcome to the Menuinator 3000!\n";
 
@@ -215,7 +219,7 @@ int main(){
 					return 0;
 				}
 
-				if (strcasecmp(input.c_str(), "cancel") == 0) {
+				if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 					menuInput = 0; //return to start
 				}
 
@@ -230,7 +234,7 @@ int main(){
 						return 0;
 					}
 
-					if (strcasecmp(input.c_str(), "cancel") == 0) {
+					if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 						menuInput = 0; //exit while loop
 					}
 
@@ -246,10 +250,18 @@ int main(){
 			}
 
 			if (input == "5") {
-				mainsInput = 5;
-				cout << "Here is your current order: \n";
-				displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-				menuInput = 1; //should hopefully go back to the mains menu options 
+				if (currentDishes == 0) {
+					mainsInput =5;
+					cout << "Please add some dishes to your order first!\n";
+					menuInput = 0; //should hopefully go back to the mains menu options 
+				} else {
+					mainsInput = 5;
+					cout << "mainsINput: " << mainsInput << "\n";
+					cout << "Here is your current order: \n";
+					displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+					menuInput = 1; //should hopefully go back to the mains menu options
+				}
+				 
 			}
 
 			while (mainsInput == 1) {
@@ -380,7 +392,7 @@ int main(){
 								return 0;
 							}
 
-							if (strcasecmp(input.c_str(), "cancel") == 0) {
+							if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 								menuInput = 0; //return to start
 							}
 
@@ -395,7 +407,7 @@ int main(){
 									return 0;
 								}
 
-								if (strcasecmp(input.c_str(), "cancel") == 0) {
+								if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 									menuInput = 0; //exit while loop
 								}
 
@@ -414,13 +426,14 @@ int main(){
 								cout << "(2) Look at a different menu\n";
 								cout << "(3) Finalise order\n";
 								cout << "(4) Cancel dish from order\n";
+								cout << "(5) Display current order\n";
 								cout << "Type 'quit' at any time to exit the program\n";
 								cin >> input;
 								if (quitCondition(input) == true) {
 									//display goodbye message function? or include this in quitCondition function?
 									return 0;
 								}
-								maxNumOptions = 4;
+								maxNumOptions = 5;
 								inputError = displayInputError(input, maxNumOptions);
 
 								while ( inputError == true) {
@@ -480,6 +493,34 @@ int main(){
 								if (input == "4") {
 									mainsInput = 4; //should go back through the loop
 								}
+
+								if (input == "5") {
+									if (currentDishes == 0) {
+										mainsInput =5;
+										cout << "Please add some dishes to your order first!\n";
+										menuInput = 1; //should hopefully go back to the mains menu options 
+									} else {
+										mainsInput = 5;
+										cout << "mainsINput: " << mainsInput << "\n";
+										cout << "Here is your current order: \n";
+										displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+										menuInput = 1; //should hopefully go back to the mains menu options
+									} 
+								}
+							}
+
+							if (input == "5") {
+								if (currentDishes == 0) {
+									mainsInput =5;
+									cout << "Please add some dishes to your order first!\n";
+									menuInput = 1; //should hopefully go back to the mains menu options 
+								} else {
+									mainsInput = 5;
+									cout << "mainsINput: " << mainsInput << "\n";
+									cout << "Here is your current order: \n";
+									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+									menuInput = 1; //should hopefully go back to the mains menu options
+								} 
 							}
 						}								
 					}
@@ -490,7 +531,42 @@ int main(){
 		while (menuInput == 2) { //drinks menu
 			//display drinks menu function
 
-			cout << "\nIn the menu, there are numbers listed next to all the items. \n";
+			drinkInput = 0; //resets the loop
+			//prompt for next action:
+			cout << "\nWhat would you like to do next?\n";
+			cout << "Please enter a number: \n";
+			cout << "(1) Add drink to order\n";
+			cout << "(2) Look at a different menu\n";
+			cout << "(3) Finalise order\n";
+			cout << "(4) Cancel item from order\n";
+			cout << "(5) Display current order\n";
+			cout << "Type 'quit' at any time to exit the program\n";
+			cin >> input;
+			//cout << "input value: " << input << ", drinkInput: " << drinkInput << "\n";
+			if (quitCondition(input) == true) {
+				//display goodbye message function? or include this in quitCondition function?
+				return 0;
+			}
+			maxNumOptions = 5;
+			inputError = displayInputError(input, maxNumOptions);
+
+			while ( inputError == true) {
+				cin >> input;
+				if (quitCondition(input) == true) {
+					//display goodbye message function? or include this in quitCondition function?
+					return 0;
+				}
+				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
+			}
+
+			//mainsInput = 0;
+			if (input == "1") {
+				drinkInput = 1;    //acutally might not need this loop
+			}
+
+			while (drinkInput == 1) {
+
+				cout << "\nIn the menu, there are numbers listed next to all the items. \n";
 				cout << "Please enter the number of the item you would like to add to your order: ";
 				cin >> dishNum;
 				if (quitCondition(dishNum) == true) {
@@ -509,7 +585,7 @@ int main(){
 				//asking whether they would like entree or main:
 				size = "0";
 				cout << "Please enter the number corresponding to the size you would like to order:\n";
-				cout << "(1) Bottle\n" << "(2) Glass\n";
+				cout << "(1) Glass\n" << "(2) Bottle\n";
 				cin >> size;
 				if (quitCondition(size) == true) {
 					//display goodbye message function? or include this in quitCondition function?
@@ -532,17 +608,18 @@ int main(){
 				//prompt for next action:
 				cout << "\nWhat would you like to do next?\n";
 				cout << "Please enter a number: \n";
-				cout << "(1) Add item to order\n";
+				cout << "(1) Add drink to order\n";
 				cout << "(2) Look at a different menu\n";
 				cout << "(3) Finalise order\n";
 				cout << "(4) Cancel item from order\n";
+				cout << "(5) Display current order\n";
 				cout << "Type 'quit' at any time to exit the program\n";
 				cin >> input;
 				if (quitCondition(input) == true) {
 					//display goodbye message function? or include this in quitCondition function?
 					return 0;
 				}
-				maxNumOptions = 4;
+				maxNumOptions = 5;
 				inputError = displayInputError(input, maxNumOptions);
 
 				while ( inputError == true) {
@@ -555,15 +632,17 @@ int main(){
 				}
 
 				//mainsInput = 0;
-				if (input == "1") {
-					mainsInput = 1;    //acutally might not need this loop
+				if (input != "1") {
+					drinkInput = 0;    //breaks the while loop
 				}
+			}
+
 				if (input == "2") {
-					mainsInput = 2;
+					drinkInput = 2;
 					menuInput = 0; //hopefully will exit the loop - works!
 				}
 				if (input == "3") {
-					mainsInput = 3;
+					drinkInput = 3;
 					if (currentDishes == 0) {
 						cout << "\nPlease add some items to your order first!\n";
 						menuInput = 0; //go back to start
@@ -601,8 +680,8 @@ int main(){
 					}
 				}
 				if (input == "4") {
-					mainsInput = 4;
-					while (mainsInput == 4) {
+					drinkInput = 4;
+					while (drinkInput == 4) {
 						cout << "Please enter the name of the dish you want to remove from your order: \n";
 						cout << "(Type 'cancel' to go back to the menu selection screen)\n";
 						cin.ignore(100, '\n');
@@ -612,7 +691,7 @@ int main(){
 							return 0;
 						}
 
-						if (strcasecmp(input.c_str(), "cancel") == 0) {
+						if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 							menuInput = 0; //return to start
 						}
 
@@ -627,7 +706,7 @@ int main(){
 								return 0;
 							}
 
-							if (strcasecmp(input.c_str(), "cancel") == 0) {
+							if (strcasecmp(input.c_str(), cancelCondition.c_str()) == 0) {
 								menuInput = 0; //exit while loop
 							}
 
@@ -647,13 +726,14 @@ int main(){
 							cout << "(2) Look at a different menu\n";
 							cout << "(3) Finalise order\n";
 							cout << "(4) Cancel dish from order\n";
+							cout << "(5) Display current order\n";
 							cout << "Type 'quit' at any time to exit the program\n";
 							cin >> input;
 							if (quitCondition(input) == true) {
 								//display goodbye message function? or include this in quitCondition function?
 								return 0;
 							}
-							maxNumOptions = 4;
+							maxNumOptions = 5;
 							inputError = displayInputError(input, maxNumOptions);
 
 							while ( inputError == true) {
@@ -666,14 +746,14 @@ int main(){
 							}
 							//mainsInput = 0;
 							if (input == "1") {
-								mainsInput = 1;    //acutally might not need this loop
+								drinkInput = 1;    //acutally might not need this loop
 							}
 							if (input == "2") {
-								mainsInput = 2;
+								drinkInput = 2;
 								menuInput = 0; //hopefully will exit the loop - works!
 							}
 							if (input == "3") {
-								mainsInput = 3;
+								drinkInput = 3;
 								if (currentDishes == 0) {
 									cout << "\nPlease add some items to your order first!\n";
 									menuInput = 0; //go back to start
@@ -712,14 +792,40 @@ int main(){
 							}
 
 							if (input == "4") {
-								mainsInput = 4; //should go back through the loop
-							}
-															
+								drinkInput = 4; //should go back through the loop
+							}	
+
+							if (input == "5") {
+								if (currentDishes == 0) {
+									drinkInput =5;
+									cout << "\nPlease add some dishes to your order first!\n";
+									menuInput = 0; //should hopefully go back to the menu options 
+								} else {
+									drinkInput = 5;
+									//cout << "drinkINput: " << drinkInput << "\n";
+									cout << "\nHere is your current order: \n";
+									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+									menuInput = 0; //should hopefully go back to the menu options
+								}
+							}								
 						}
 					}
 				}
+				if (input == "5") {
+					if (currentDishes == 0) {
+						drinkInput =5;
+						cout << "\nPlease add some dishes to your order first!\n";
+						menuInput = 0; //should hopefully go back to the menu options 
+					} else {
+						drinkInput = 5;
+						//cout << "drinkINput: " << drinkInput << "\n";
+						cout << "\nHere is your current order: \n";
+						displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+						menuInput = 0; //should hopefully go back to the menu options
+					}
+				}	
 			}
-		}
+		//}
 
 		while (menuInput == 3) {
 			//looping for third option
@@ -730,7 +836,7 @@ int main(){
 		// ....
 
 
-	//}
+	}
 
 	//displayOptions(); //calling this jsut shows the user what menus are available
 	
