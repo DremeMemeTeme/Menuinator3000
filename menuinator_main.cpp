@@ -385,7 +385,7 @@ int main(){
 							}
 
 							dishIndex = findDishInOrder(input, orderArray, currentDishes);
-							while (dishIndex == -1 && menuInput != 0) {
+							while (dishIndex == -1 || menuInput != 0) {
 								cout << "\nDish not found! Please enter the name again: \n";
 								cout << "(Type 'cancel' to go back to the menu selection screen)\n";
 								cin.ignore(100, '\n');
@@ -414,13 +414,14 @@ int main(){
 								cout << "(2) Look at a different menu\n";
 								cout << "(3) Finalise order\n";
 								cout << "(4) Cancel dish from order\n";
+								cout << "(5) Display current order\n";
 								cout << "Type 'quit' at any time to exit the program\n";
 								cin >> input;
 								if (quitCondition(input) == true) {
 									//display goodbye message function? or include this in quitCondition function?
 									return 0;
 								}
-								maxNumOptions = 4;
+								maxNumOptions = 5;
 								inputError = displayInputError(input, maxNumOptions);
 
 								while ( inputError == true) {
@@ -480,6 +481,20 @@ int main(){
 								if (input == "4") {
 									mainsInput = 4; //should go back through the loop
 								}
+
+								if (input == "5") {
+									mainsInput = 5;
+									cout << "Here is your current order: \n";
+									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+									menuInput = 1; //should hopefully go back to the mains menu options 
+								}
+							}
+
+							if (input == "5") {
+								mainsInput = 5;
+								cout << "Here is your current order: \n";
+								displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+								menuInput = 1; //should hopefully go back to the mains menu options 
 							}
 						}								
 					}
@@ -536,13 +551,14 @@ int main(){
 				cout << "(2) Look at a different menu\n";
 				cout << "(3) Finalise order\n";
 				cout << "(4) Cancel item from order\n";
+				cout << "(5) Display current order\n";
 				cout << "Type 'quit' at any time to exit the program\n";
 				cin >> input;
 				if (quitCondition(input) == true) {
 					//display goodbye message function? or include this in quitCondition function?
 					return 0;
 				}
-				maxNumOptions = 4;
+				maxNumOptions = 5;
 				inputError = displayInputError(input, maxNumOptions);
 
 				while ( inputError == true) {
@@ -617,7 +633,7 @@ int main(){
 						}
 
 						dishIndex = findDishInOrder(input, orderArray, currentDishes);
-						while (dishIndex == -1 && menuInput != 0) {
+						while (dishIndex == -1 || menuInput != 0) {
 							cout << "\nDish not found! Please enter the name again: \n";
 							cout << "(Type 'cancel' to go back to the menu selection screen)\n";
 							cin.ignore(100, '\n');
@@ -647,13 +663,14 @@ int main(){
 							cout << "(2) Look at a different menu\n";
 							cout << "(3) Finalise order\n";
 							cout << "(4) Cancel dish from order\n";
+							cout << "(5) Display current order\n";
 							cout << "Type 'quit' at any time to exit the program\n";
 							cin >> input;
 							if (quitCondition(input) == true) {
 								//display goodbye message function? or include this in quitCondition function?
 								return 0;
 							}
-							maxNumOptions = 4;
+							maxNumOptions = 5;
 							inputError = displayInputError(input, maxNumOptions);
 
 							while ( inputError == true) {
@@ -713,8 +730,21 @@ int main(){
 
 							if (input == "4") {
 								mainsInput = 4; //should go back through the loop
-							}
-															
+							}	
+
+							if (input == "5") {
+								mainsInput = 5;
+								cout << "Here is your current order: \n";
+								displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+								menuInput = 1; //should hopefully go back to the mains menu options 
+							}								
+						}
+
+						if (input == "5") {
+							mainsInput = 5;
+							cout << "Here is your current order: \n";
+							displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+							menuInput = 1; //should hopefully go back to the mains menu options 
 						}
 					}
 				}
