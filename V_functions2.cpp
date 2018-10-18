@@ -26,19 +26,35 @@ void displayOptions()
 
 
 //DISPLAYS MAIN MENU
-void displayMain(int mainSize, mains a)
+void displayMain(mainsmenu mainsMenu)
 {
-	int size = mainSize; //size corresponds to the number of items in both menu and price array
-
-		cout << "HERE IS OUR MAINS MENU:" << "\n";
+	cout << "〖 ━━ HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
 		
-		for(int i=0; i<size; i++)
-		{
-			cout << "(" << i+1 << ")" << a.getName() << "....." << "$ " << a.getDiffPrice() << '\n'; 
-		}	
+	for(int i = 0; i<mainsMenu.getDishCount(); i++)
+	{
+		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<
+		 " .....(M)$ " << mainsMenu.getMainsMenuItem(i)->getPrice() << 
+		 ".....(E)$ " << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
+		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n";
+	}	
+
+	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
 
+
 /*
+//DISPLAYS DRINKS MENU
+void displayDrinks(drinkmenu drinkMenu)
+{
+	cout << "HERE IS OUR DRINKS MENU:" << '\n';
+	for(int i=0; i<dirnkMenu.getDishCount(); i++)
+	{
+		cout << "(" << i+1 << ")" << drinkmenu.getDrinksMenuItem(i)->getName() << "\n";
+	}
+}
+*/
+
+
 int main(){
 
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -59,32 +75,20 @@ int main(){
 	mainsMenu.addDish(salad);
 	mainsMenu.addDish(pasta);
 
-	for(int i = 0; i<mainsMenu.getDishCount(); i++){
-		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<  "\n";
-	}
-
-	
-	//displayMain(5, spag);
+	//for(int i = 0; i<mainsMenu.getDishCount(); i++){
+	//	cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<  "\n";
+	//}
 
 	//delete[] mainsArray;
 	return 0;
 }
-*/
+
 
 
 
 
 /*
-//DISPLAYS DRINKS MENU
-void displayDrinks(int drinksSize, string drinksArray[], double drinksPriceArray[])
-{
-	int size = drinksSize; //size corresponds to the number of items in both drinks and price array
-	cout << "HERE IS OUR DRINKS MENU:" << '\n';
-	for(int i=0; i<size; i++)
-	{
-		cout << drinksArray[i] << "....." << "$ " << drinksPriceArray[i] << '\n';
-	}
-}
+
 
 
 //DISPLAYES DESSERT MENU
