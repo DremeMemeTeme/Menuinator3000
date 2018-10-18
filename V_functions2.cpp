@@ -5,6 +5,10 @@ using namespace std;
 #include "mains.h"
 #include "mainsmenu.h"
 #include "dish.h"
+#include "drink.h"
+#include "drinkmenu.h"
+#include "dessert.h"
+#include "dessertsmenu.h"
 
 /*
 extern void addDish(mains dish);
@@ -28,31 +32,47 @@ void displayOptions()
 //DISPLAYS MAIN MENU
 void displayMain(mainsmenu mainsMenu)
 {
-	cout << "〖 ━━ HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
+	cout << "\n" << "〖 ━━ HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
 		
 	for(int i = 0; i<mainsMenu.getDishCount(); i++)
 	{
 		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<
-		 " .....(M)$ " << mainsMenu.getMainsMenuItem(i)->getPrice() << 
-		 ".....(E)$ " << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
-		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n";
+		 " .....(M)$" << mainsMenu.getMainsMenuItem(i)->getPrice() << 
+		 ".....(E)$" << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
+		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n" << "\n";
 	}	
 
 	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
 
-
-/*
 //DISPLAYS DRINKS MENU
 void displayDrinks(drinkmenu drinkMenu)
 {
-	cout << "HERE IS OUR DRINKS MENU:" << '\n';
-	for(int i=0; i<dirnkMenu.getDishCount(); i++)
+	cout << "\n" << "〖 ━━ HERE IS OUR DRINKS MENU ━━ 〗:" << "\n";
+	for(int i=0; i<drinkMenu.getDishCount(); i++)
 	{
-		cout << "(" << i+1 << ")" << drinkmenu.getDrinksMenuItem(i)->getName() << "\n";
+		cout << "(" << i+1 << ")" << drinkMenu.getDrinkMenuItem(i)->getName() << 
+		".....(G)$" << drinkMenu.getDrinkMenuItem(i)->getPrice() << 
+		".....(B)$" << drinkMenu.getDrinkMenuItem(i)->getDiffPrice() << "\n";
+
+		cout << "   ➩ Goes well with: " << drinkMenu.getDrinkMenuItem(i)->getInfo() << "\n" << "\n";
+	}
+	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
+}
+
+//DISPLAYES DESSERT MENU
+void displayDessert(des)
+{
+	int size = dessertSize; //size corresponds to the number of items in both drinks and price array
+	cout << "HERE IS OUR DESSERT MENU:" << '\n';
+	for(int i=0; i<size; i++)
+	{
+		cout << dessertArray[i] << "....." << "$ " << dessertPriceArray[i] << '\n';
 	}
 }
-*/
+
+
+
 
 
 int main(){
@@ -62,6 +82,10 @@ int main(){
 	mains curry = mains("Vindaloo", 18.9, "no allergens", 15.8, true);
 	mains salad = mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
 	mains pasta = mains ("Creamy Fettucine", 18.9, "gluten, dairy", 15.9, false);
+
+
+	drink white = drink("House White", 6.40, 25.0, "Creamy Fettucine");
+	drink red = drink("House Red", 6.40, 25.0, "Vindaloo");
 
  
 	//creating & intitializing menus
@@ -75,9 +99,19 @@ int main(){
 	mainsMenu.addDish(salad);
 	mainsMenu.addDish(pasta);
 
-	//for(int i = 0; i<mainsMenu.getDishCount(); i++){
-	//	cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<  "\n";
-	//}
+
+	drinkmenu drinkMenu = drinkmenu("Drinks Menu", 15);
+	//--------------------
+	drinkMenu.addDish(white);
+	drinkMenu.addDish(red);
+	//--------------------
+
+	//displayMain(mainsMenu);
+	//displayDrinks(drinkMenu);
+
+
+
+
 
 	//delete[] mainsArray;
 	return 0;
@@ -88,20 +122,6 @@ int main(){
 
 
 /*
-
-
-
-//DISPLAYES DESSERT MENU
-void displayDessert(int dessertSize, string dessertArray[], double dessertPriceArray[])
-{
-	int size = dessertSize; //size corresponds to the number of items in both drinks and price array
-	cout << "HERE IS OUR DESSERT MENU:" << '\n';
-	for(int i=0; i<size; i++)
-	{
-		cout << dessertArray[i] << "....." << "$ " << dessertPriceArray[i] << '\n';
-	}
-}
-
 //DISPLAYS ERROR MESSAGE
 void displayError() //display error message
 {
