@@ -21,7 +21,7 @@ extern mains getMainsMenuItem(int i);
 //DISPLAYS WHAT MENU YOU WANT TO VIEW
 void displayOptions()
 {
-	cout <<"What would you like to look at?" << '\n';
+	cout << "\n" <<" What would you like to look at?" << '\n';
 	cout <<"(Please enter the number of the menu you would like to look at)" << '\n';
 	cout <<"(1) Mains Menu" << '\n';
 	cout <<"(2) Drinks Menu" << '\n';
@@ -61,7 +61,6 @@ void displayDrinks(drinkmenu drinkMenu)
 }
 
 
-
 //DISPLAYES DESSERT MENU
 void displayDessert(dessertsmenu dessertsMenu)
 {
@@ -76,9 +75,7 @@ void displayDessert(dessertsmenu dessertsMenu)
 	}
 		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
-
-
-
+/*
 int main(){
 
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -105,7 +102,6 @@ int main(){
 	mainsMenu.addDish(pasta);
 	//--------------------
 
-	
 	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
 	//--------------------
 	dessertsMenu.addDish(choc_cake);
@@ -117,7 +113,6 @@ int main(){
 	drinkMenu.addDish(white);
 	drinkMenu.addDish(red);
 	//--------------------
-
 
 	displayOptions();
 
@@ -135,13 +130,23 @@ int main(){
 	if(userInput == 3){
 		displayDessert(dessertsMenu);
 	}
-	
+
 	
 	//delete[] mainsArray;
 	return 0;
 }
+*/
 
+/* -------------------------------------------------------------
 
+If it helps find any errors, this is what I typed when
+compiling it:
+
+g++ -std=c++11 -o displayMain dish.cpp mains.cpp menu.cpp
+mainsmenu.cpp drink.cpp drinkmenu.cpp dessert.cpp dessertsmenu.cpp
+V-functions2.cpp
+
+------------------------------------------------------------------*/
 
 
 

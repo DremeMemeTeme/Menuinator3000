@@ -22,6 +22,9 @@ extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, dou
 extern bool displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
+extern void displayMain(mainsmenu mainsMenu);
+extern void displayDrinks(drinkmenu drinkMenu);
+extern void displayDessert(dessertsmenu dessertsMenu);
 extern bool quitCondition(string input);
 
 
@@ -138,6 +141,8 @@ int main(){
 
 		while (menuInput == 1) {
 			//Display mains menu function
+			displayMain(mainsMenu);
+
 			cout << "\nWhat would you like to do next?\n";
 			cout << "Please enter a number: \n";
 			cout << "(1) Add mains dish to order\n";
@@ -530,6 +535,7 @@ int main(){
 		}
 		while (menuInput == 2) { //drinks menu
 			//display drinks menu function
+			displayDrinks(drinkMenu);
 
 			drinkInput = 0; //resets the loop
 			//prompt for next action:
@@ -829,6 +835,10 @@ int main(){
 
 		while (menuInput == 3) {
 			//looping for third option
+			//display desserts option
+			displayDessert(dessertsMenu);
+
+
 			return 0; //just testing first option at the moment
 			//prompt again, using input variable
 		}
