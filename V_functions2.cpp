@@ -32,12 +32,12 @@ void displayOptions()
 //DISPLAYS MAIN MENU
 void displayMain(mainsmenu mainsMenu)
 {
-	cout << "\n" << "〖 ━━ HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
+	cout << "\n" << "〖 ━━  HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
 		
 	for(int i = 0; i<mainsMenu.getDishCount(); i++)
 	{
 		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<
-		 " .....(M)$" << mainsMenu.getMainsMenuItem(i)->getPrice() << 
+		 ".....(M)$" << mainsMenu.getMainsMenuItem(i)->getPrice() << 
 		 ".....(E)$" << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
 		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n" << "\n";
 	}	
@@ -48,7 +48,7 @@ void displayMain(mainsmenu mainsMenu)
 //DISPLAYS DRINKS MENU
 void displayDrinks(drinkmenu drinkMenu)
 {
-	cout << "\n" << "〖 ━━ HERE IS OUR DRINKS MENU ━━ 〗:" << "\n";
+	cout << "\n" << "〖 ━━  HERE IS OUR DRINKS MENU ━━ 〗:" << "\n";
 	for(int i=0; i<drinkMenu.getDishCount(); i++)
 	{
 		cout << "(" << i+1 << ")" << drinkMenu.getDrinkMenuItem(i)->getName() << 
@@ -60,18 +60,22 @@ void displayDrinks(drinkmenu drinkMenu)
 	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
 
+
+
 //DISPLAYES DESSERT MENU
-void displayDessert(des)
+void displayDessert(dessertsmenu dessertsMenu)
 {
-	int size = dessertSize; //size corresponds to the number of items in both drinks and price array
-	cout << "HERE IS OUR DESSERT MENU:" << '\n';
-	for(int i=0; i<size; i++)
+	cout << "\n" << "〖 ━━  HERE IS OUR DESSERTS MENU ━━ 〗:" << "\n";
+	for(int i=0; i<dessertsMenu.getDishCount(); i++)
 	{
-		cout << dessertArray[i] << "....." << "$ " << dessertPriceArray[i] << '\n';
+		cout << "(" << i+1 << ")" << dessertsMenu.getDessertsMenuItem(i)->getName() << 
+		".....$" << dessertsMenu.getDessertsMenuItem(i)->getPrice() << "\n";
+
+		cout << "   ➩ Contains: " << dessertsMenu.getDessertsMenuItem(i)->getInfo() << "\n";
+		cout << "   ➩ Sweetnes Level: " << dessertsMenu.getDessertsMenuItem(i)->howSweet() << "\n" << "\n";
 	}
+		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
-
-
 
 
 
@@ -83,22 +87,30 @@ int main(){
 	mains salad = mains("Ceasar Salad", 15.9, "gluten, egg", 12.9, false);
 	mains pasta = mains ("Creamy Fettucine", 18.9, "gluten, dairy", 15.9, false);
 
+	//desserts:
+	dessert choc_cake = dessert("Chocolate Cake", 5.50, "egg, gluten & dairy", "sweet");
+	dessert citrus_tart = dessert("Citrus Tart", 5.50, "egg & gluten", "very sweet");
+	//drinks:
 
 	drink white = drink("House White", 6.40, 25.0, "Creamy Fettucine");
 	drink red = drink("House Red", 6.40, 25.0, "Vindaloo");
 
- 
 	//creating & intitializing menus
 	mainsmenu mainsMenu = mainsmenu("Mains Menu", 20);
-	int maxDishes = 20;
-	//mains * mainsArray = new mains[maxDishes];
 	//--------------------
 	mainsMenu.addDish(spag);
 	mainsMenu.addDish(sandwich);
 	mainsMenu.addDish(curry);
 	mainsMenu.addDish(salad);
 	mainsMenu.addDish(pasta);
+	//--------------------
 
+	
+	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
+	//--------------------
+	dessertsMenu.addDish(choc_cake);
+	dessertsMenu.addDish(citrus_tart);
+	//--------------------
 
 	drinkmenu drinkMenu = drinkmenu("Drinks Menu", 15);
 	//--------------------
@@ -106,8 +118,9 @@ int main(){
 	drinkMenu.addDish(red);
 	//--------------------
 
-	//displayMain(mainsMenu);
-	//displayDrinks(drinkMenu);
+	displayMain(mainsMenu);
+	displayDrinks(drinkMenu);
+	displayDessert(dessertsMenu);
 
 
 
