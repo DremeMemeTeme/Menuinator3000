@@ -1,0 +1,46 @@
+Welcome to the Menuinator 3000!
+
+ What would you like to look at?
+(Please enter the number of the menu you would like to look at)
+(1) Mains Menu
+(2) Drinks Menu
+(3) Desserts Menu
+Type 'quit' at any time to exit the program
+
+〖 ━━  HERE IS OUR MAINS MENU ━━ 〗:
+(1)Spaghetti.....(M)$18.9.....(E)$15.9
+   ➩ Contains: gluten
+   ➩ Dish is not Spicy
+
+(2)Sandwich.....(M)$7.9.....(E)$4.5
+   ➩ Contains: gluten, dairy
+   ➩ Dish is not Spicy
+
+(3)Vindaloo.....(M)$18.9.....(E)$15.8
+   ➩ Contains: no allergens
+   ➩ Dish is Spicy
+
+(4)Ceasar Salad.....(M)$15.9.....(E)$12.9
+   ➩ Contains: gluten, egg
+   ➩ Dish is not Spicy
+
+(5)Creamy Fettucine.....(M)$18.9.....(E)$15.9
+   ➩ Contains: gluten, dairy
+   ➩ Dish is not Spicy
+
+ ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇
+
+What would you like to do next?
+Please enter a number: 
+(1) Add mains dish to order
+(2) Look at a different menu
+(3) Finalise order
+(4) Cancel item from order
+(5) Display current order
+Type 'quit' at any time to exit the program
+
+In the menu, there are numbers listed next to all the dishes. 
+Please enter the number of the dish you would like to add to your order: Please enter the number corresponding to the size you would like to order:
+(1) Main
+(2) Entree
+Thanks for using the Menu-inator 3000! See you next time.
