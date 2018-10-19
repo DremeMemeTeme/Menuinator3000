@@ -22,7 +22,7 @@ extern void addDrink(dish ** order, int * currentDishes, drink * addedDrink, dou
 extern bool displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
-extern void displayMain(mainsmenu mainsMenu);
+extern void displayMain(mainsmenu * mainsMenu);
 extern void displayDrinks(drinkmenu drinkMenu);
 extern void displayDessert(dessertsmenu dessertsMenu);
 extern bool quitCondition(string input);
@@ -48,6 +48,7 @@ int main()
 
 	//creating & intitializing menus
 	mainsmenu mainsMenu = mainsmenu("Mains Menu", 20);
+	mainsmenu * mainsMenuPtr = &mainsMenu; //seeing if this fixes the bugs
 	//--------------------
 	mainsMenu.addDish(spag);
 	mainsMenu.addDish(sandwich);
@@ -55,6 +56,7 @@ int main()
 	mainsMenu.addDish(salad);
 	mainsMenu.addDish(pasta);
 	//--------------------
+
 
 	
 	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
@@ -99,6 +101,8 @@ int main()
 
 	cout << "Welcome to the Menuinator 3000!\n";
 
+	cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
+
 	while (exitCondition != 0) { //may or may not work having this loop
 		/*
 		cout << "Welcome to the Menuinator 3000! \nWhich menu would you like to look at today?\n";
@@ -112,7 +116,8 @@ int main()
 		cout << "Type 'quit' at any time to exit the program\n";
 		cin >> input;
 		if (quitCondition(input) == true) {
-			//display goodbye message function? or include this in quitCondition function?
+			delete[] orderArray;
+			delete[] dishSizes;
 			return 0;
 		}
 
@@ -121,7 +126,8 @@ int main()
 		while (inputError == true) {
 			cin >> input;
 			if (quitCondition(input) == true) {
-				//display goodbye message function? or include this in quitCondition function?
+				delete[] orderArray;
+				delete[] dishSizes;
 				return 0;
 			}
 			inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
@@ -129,6 +135,9 @@ int main()
 
 		menuInput = 0; 
 		if (input == "1") {
+			cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
+			displayMain(mainsMenuPtr); //put it here so that menu only displays once
+			cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
 			menuInput = 1;
 		} 
 		if (input == "2") {
@@ -142,7 +151,7 @@ int main()
 
 		while (menuInput == 1) {
 			//Display mains menu function
-			displayMain(mainsMenu);
+			
 
 			cout << "\nWhat would you like to do next?\n";
 			cout << "Please enter a number: \n";
@@ -154,7 +163,8 @@ int main()
 			cout << "Type 'quit' at any time to exit the program\n";
 			cin >> input;
 			if (quitCondition(input) == true) {
-				//display goodbye message function? or include this in quitCondition function?
+				delete[] orderArray;
+				delete[] dishSizes;
 				return 0;
 			}
 			maxNumOptions = 5;
@@ -163,7 +173,8 @@ int main()
 			while ( inputError == true) {
 				cin >> input;
 				if (quitCondition(input) == true) {
-					//display goodbye message function? or include this in quitCondition function?
+					delete[] orderArray;
+					delete[] dishSizes;
 					return 0;
 				}
 				inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
@@ -190,7 +201,8 @@ int main()
 					cout << "(n) No\n";
 					cin >> input;
 					if (quitCondition(input) == true) {
-						//display goodbye message function? or include this in quitCondition function?
+						delete[] orderArray;
+						delete[] dishSizes;
 						return 0;
 					}
 
@@ -198,7 +210,8 @@ int main()
 						cout << "Invalid input! Please enter either 'y' or 'n': ";
 						cin >> input;
 						if (quitCondition(input) == true) {
-							//display goodbye message function? or include this in quitCondition function?
+							delete[] orderArray;
+							delete[] dishSizes;
 							return 0;
 						}
 					}
@@ -206,6 +219,8 @@ int main()
 					if (input == "y" || input == "Y") {
 						cout << "Thank you for using the Menu-inator 3000!\n";
 						cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+						delete[] orderArray;
+						delete[] dishSizes;
 						return 0;
 					}
 
@@ -221,7 +236,8 @@ int main()
 				cin.ignore(100, '\n'); //ignores newline character for cin input
 				getline(cin, input);
 				if (quitCondition(input) == true) {
-					//display goodbye message function? or include this in quitCondition function?
+					delete[] orderArray;
+					delete[] dishSizes;
 					return 0;
 				}
 
@@ -262,7 +278,7 @@ int main()
 					menuInput = 0; //should hopefully go back to the mains menu options 
 				} else {
 					mainsInput = 5;
-					cout << "mainsINput: " << mainsInput << "\n";
+					//cout << "mainsINput: " << mainsInput << "\n";
 					cout << "Here is your current order: \n";
 					displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
 					menuInput = 1; //should hopefully go back to the mains menu options
@@ -279,14 +295,16 @@ int main()
 					cout << "Please enter the number of the dish you would like to add to your order: ";
 					cin >> dishNum;
 					if (quitCondition(dishNum) == true) {
-						//display goodbye message function? or include this in quitCondition function?
+						delete[] orderArray;
+						delete[] dishSizes;
 						return 0;
 					}
 					inputError = displayInputError(dishNum, mainsMenu.getDishCount());
 					while(inputError == true) {
 						cin >> dishNum;
 						if (quitCondition(dishNum) == true) {
-							//display goodbye message function? or include this in quitCondition function?
+							delete[] orderArray;
+							delete[] dishSizes;
 							return 0;
 						}
 						inputError = displayInputError(dishNum, mainsMenu.getDishCount());
@@ -297,7 +315,8 @@ int main()
 					cout << "(1) Main\n" << "(2) Entree\n";
 					cin >> size;
 					if (quitCondition(size) == true) {
-						//display goodbye message function? or include this in quitCondition function?
+						delete[] orderArray;
+						delete[] dishSizes;
 						return 0;
 					}
 	
@@ -305,13 +324,17 @@ int main()
 						cout << "That is not a valid number! Please enter either 1 or 2: ";
 						cin >> size;
 						if (quitCondition(size) == true) {
-							//display goodbye message function? or include this in quitCondition function?
+							delete[] orderArray;
+							delete[] dishSizes;
 							return 0;
 						}
 					} 
 
 					dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
+
 					addedMains = mainsMenu.getMainsMenuItem(dishIndex);
+					cout << "dish index: " << dishIndex << "\n";
+					cout << "Added mains: " << addedMains->getName() << "\n";
 					addMains(orderArray, currentDishesPtr, addedMains, &totalCost, size, dishSizes);
 
 					//prompt for next action:
@@ -325,7 +348,8 @@ int main()
 					cout << "Type 'quit' at any time to exit the program\n";
 					cin >> input;
 					if (quitCondition(input) == true) {
-						//display goodbye message function? or include this in quitCondition function?
+						delete[] orderArray;
+						delete[] dishSizes;
 						return 0;
 					}
 					maxNumOptions = 5;
@@ -334,7 +358,8 @@ int main()
 					while ( inputError == true) {
 						cin >> input;
 						if (quitCondition(input) == true) {
-							//display goodbye message function? or include this in quitCondition function?
+							delete[] orderArray;
+							delete[] dishSizes;
 							return 0;
 						}
 						inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
@@ -362,7 +387,8 @@ int main()
 							cout << "(n) No\n";
 							cin >> input;
 							if (quitCondition(input) == true) {
-								//display goodbye message function? or include this in quitCondition function?
+								delete[] orderArray;
+								delete[] dishSizes;
 								return 0;
 							}
 
@@ -370,7 +396,8 @@ int main()
 								cout << "Invalid input! Please enter either 'y' or 'n': ";
 								cin >> input;
 								if (quitCondition(input) == true) {
-									//display goodbye message function? or include this in quitCondition function?
+									delete[] orderArray;
+									delete[] dishSizes;
 									return 0;
 								}
 							}
@@ -378,6 +405,8 @@ int main()
 							if (input == "y" || input == "Y") {
 								cout << "Thank you for using the Menu-inator 3000!\n";
 								cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+								delete[] orderArray;
+								delete[] dishSizes;
 								return 0;
 							}
 
@@ -394,7 +423,8 @@ int main()
 							cin.ignore(100, '\n');
 							getline(cin, input);
 							if (quitCondition(input) == true) {
-								//display goodbye message function? or include this in quitCondition function?
+								delete[] orderArray;
+								delete[] dishSizes;
 								return 0;
 							}
 
@@ -409,7 +439,8 @@ int main()
 								cin.ignore(100, '\n');
 								getline(cin, input);
 								if (quitCondition(input) == true) {
-									//display goodbye message function? or include this in quitCondition function?
+									delete[] orderArray;
+									delete[] dishSizes;
 									return 0;
 								}
 
@@ -428,7 +459,7 @@ int main()
 								//prompting for next input
 								cout << "\nWhat would you like to do next?\n";
 								cout << "Please enter a number: \n";
-								cout << "(1) Add dish to order\n";
+								cout << "(1) Add mains dish to order\n";
 								cout << "(2) Look at a different menu\n";
 								cout << "(3) Finalise order\n";
 								cout << "(4) Cancel dish from order\n";
@@ -436,7 +467,8 @@ int main()
 								cout << "Type 'quit' at any time to exit the program\n";
 								cin >> input;
 								if (quitCondition(input) == true) {
-									//display goodbye message function? or include this in quitCondition function?
+									delete[] orderArray;
+									delete[] dishSizes;
 									return 0;
 								}
 								maxNumOptions = 5;
@@ -445,7 +477,8 @@ int main()
 								while ( inputError == true) {
 									cin >> input;
 									if (quitCondition(input) == true) {
-										//display goodbye message function? or include this in quitCondition function?
+										delete[] orderArray;
+										delete[] dishSizes;
 										return 0;
 									}
 									inputError = displayInputError(input, maxNumOptions); //continually prompts for input as long as input is invalid
@@ -472,7 +505,8 @@ int main()
 										cout << "(n) No\n";
 										cin >> input;
 										if (quitCondition(input) == true) {
-											//display goodbye message function? or include this in quitCondition function?
+											delete[] orderArray;
+											delete[] dishSizes;
 											return 0;
 										}
 
@@ -480,7 +514,8 @@ int main()
 											cout << "Invalid input! Please enter either 'y' or 'n': ";
 											cin >> input;
 											if (quitCondition(input) == true) {
-												//display goodbye message function? or include this in quitCondition function?
+												delete[] orderArray;
+												delete[] dishSizes;
 												return 0;
 											}
 										}
@@ -488,6 +523,8 @@ int main()
 										if (input == "y" || input == "Y") {
 											cout << "Thank you for using the Menu-inator 3000!\n";
 											cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+											delete[] orderArray;
+											delete[] dishSizes;
 											return 0;
 										}
 
@@ -495,6 +532,7 @@ int main()
 											menuInput = 0; //return to start
 										}
 									}
+								}
 
 								if (input == "4") {
 									mainsInput = 4; //should go back through the loop
@@ -507,30 +545,29 @@ int main()
 										menuInput = 1; //should hopefully go back to the mains menu options 
 									} else {
 										mainsInput = 5;
-										cout << "mainsINput: " << mainsInput << "\n";
+										//cout << "mainsINput: " << mainsInput << "\n";
 										cout << "Here is your current order: \n";
 										displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
 										menuInput = 1; //should hopefully go back to the mains menu options
 									} 
 								}
 							}
+						}
+					}
 
-							if (input == "5") {
-								if (currentDishes == 0) {
-									mainsInput =5;
-									cout << "Please add some dishes to your order first!\n";
-									menuInput = 1; //should hopefully go back to the mains menu options 
-								} else {
-									mainsInput = 5;
-									cout << "mainsINput: " << mainsInput << "\n";
-									cout << "Here is your current order: \n";
-									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-									menuInput = 1; //should hopefully go back to the mains menu options
-								} 
-							}
-						}								
-					}
-					}
+					if (input == "5") {
+						if (currentDishes == 0) {
+							mainsInput =5;
+							cout << "Please add some dishes to your order first!\n";
+							menuInput = 1; //should hopefully go back to the mains menu options 
+						} else {
+							mainsInput = 5;
+							//cout << "mainsINput: " << mainsInput << "\n";
+							cout << "Here is your current order: \n";
+							displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
+							menuInput = 1; //should hopefully go back to the mains menu options
+						} 
+					}		
 				}
 			}
 		}
@@ -1144,11 +1181,12 @@ int main()
 		}
 
 		// ....
-	}
-	//delete[] orderArray;
-	//delete[] dishSizes;
+	
+	delete[] orderArray;
+	delete[] dishSizes;
 	//delete any other memory allocated by new
-	//return 0;
+	return 0;
+}
 //}
 
 
