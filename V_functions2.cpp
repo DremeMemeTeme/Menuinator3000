@@ -10,14 +10,6 @@ using namespace std;
 #include "dessert.h"
 #include "dessertsmenu.h"
 
-/*
-extern void addDish(mains dish);
-extern int getDishCount();
-extern int getMax();
-extern mains getMainsMenuItem(int i);
-*/
-//extern mainsmenu(string menuTitle, int numOfItems);
-
 //DISPLAYS WHAT MENU YOU WANT TO VIEW
 void displayOptions()
 {
@@ -54,8 +46,6 @@ void displayMain(mainsmenu * mainsMenu)
 }
 
 
-
-/*
 //DISPLAYS DRINKS MENU
 void displayDrinks(drinkmenu * drinkMenu)
 {
@@ -86,8 +76,8 @@ void displayDessert(dessertsmenu * dessertsMenu)
 	}
 		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
-*/
 
+/*
 int main(){
 
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -116,12 +106,14 @@ int main(){
 	//--------------------
 
 	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
+	dessertsmenu * dessertsMenuPtr = &dessertsMenu;
 	//--------------------
 	dessertsMenu.addDish(choc_cake);
 	dessertsMenu.addDish(citrus_tart);
 	//--------------------
 
 	drinkmenu drinkMenu = drinkmenu("Drinks Menu", 15);
+	drinkmenu * drinkMenuPtr = &drinkMenu;
 	//--------------------
 	drinkMenu.addDish(white);
 	drinkMenu.addDish(red);
@@ -137,42 +129,22 @@ int main(){
 		displayMain(mainsMenuPtr);
 	}
 
-	/*
-
 	if(userInput == 2){
-		displayDrinks(drinkMenu);
+		displayDrinks(drinkMenuPtr);
 	}
 	if(userInput == 3){
-		displayDessert(dessertsMenu);
+		displayDessert(dessertsMenuPtr);
 	}
-	*/
-/*
 
-	cout << "\n" << "〖 ━━  HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
-		
-	for(int i = 0; i<mainsMenu.getDishCount(); i++)
-	{
-		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<
-		 ".....(M)$" << mainsMenu.getMainsMenuItem(i)->getPrice() << 
-		 ".....(E)$" << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
-		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n";
-
-		 cout << "   ➩ This Dish is " << mainsMenu.getMainsMenuItem(i)->isSpicy() << "\n" <<" \n";
-	}	
-
-	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
-
-*/
-	
 	//delete[] mainsArray;
 	return 0;
 }
+*/
 
 
 /* -------------------------------------------------------------
 
-If it helps find any errors, this is what I typed when
-compiling it:
+compile using:
 
 g++ -std=c++11 -o displayMain dish.cpp mains.cpp menu.cpp
 mainsmenu.cpp drink.cpp drinkmenu.cpp dessert.cpp dessertsmenu.cpp
@@ -181,7 +153,7 @@ V-functions2.cpp
 ------------------------------------------------------------------*/
 
 
-
+//Dont know if we still need this
 /*
 //DISPLAYS ERROR MESSAGE
 void displayError() //display error message
