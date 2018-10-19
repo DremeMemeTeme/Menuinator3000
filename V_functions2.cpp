@@ -46,32 +46,32 @@ void displayMain(mainsmenu * mainsMenu)
 }
 
 //DISPLAYS DRINKS MENU
-void displayDrinks(drinkmenu drinkMenu)
+void displayDrinks(drinkmenu * drinkMenu)
 {
 	cout << "\n" << "〖 ━━  HERE IS OUR DRINKS MENU ━━ 〗:" << "\n";
 	for(int i=0; i<drinkMenu.getDishCount(); i++)
 	{
 		cout << "(" << i+1 << ")" << drinkMenu.getDrinkMenuItem(i)->getName() << 
-		".....(G)$" << drinkMenu.getDrinkMenuItem(i)->getPrice() << 
-		".....(B)$" << drinkMenu.getDrinkMenuItem(i)->getDiffPrice() << "\n";
+		".....(G)$" << drinkMenu->getDrinkMenuItem(i)->getPrice() << 
+		".....(B)$" << drinkMenu->getDrinkMenuItem(i)->getDiffPrice() << "\n";
 
-		cout << "   ➩ Goes well with: " << drinkMenu.getDrinkMenuItem(i)->getInfo() << "\n" << "\n";
+		cout << "   ➩ Goes well with: " << drinkMenu->getDrinkMenuItem(i)->getInfo() << "\n" << "\n";
 	}
 	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
 
 
 //DISPLAYES DESSERT MENU
-void displayDessert(dessertsmenu dessertsMenu)
+void displayDessert(dessertsmenu * dessertsMenu)
 {
 	cout << "\n" << "〖 ━━  HERE IS OUR DESSERTS MENU ━━ 〗:" << "\n";
 	for(int i=0; i<dessertsMenu.getDishCount(); i++)
 	{
-		cout << "(" << i+1 << ")" << dessertsMenu.getDessertsMenuItem(i)->getName() << 
-		".....$" << dessertsMenu.getDessertsMenuItem(i)->getPrice() << "\n";
+		cout << "(" << i+1 << ")" << dessertsMenu->getDessertsMenuItem(i)->getName() << 
+		".....$" << dessertsMenu->getDessertsMenuItem(i)->getPrice() << "\n";
 
-		cout << "   ➩ Contains: " << dessertsMenu.getDessertsMenuItem(i)->getInfo() << "\n";
-		cout << "   ➩ Sweetness Level: " << dessertsMenu.getDessertsMenuItem(i)->howSweet() << "\n" << "\n";
+		cout << "   ➩ Contains: " << dessertsMenu->getDessertsMenuItem(i)->getInfo() << "\n";
+		cout << "   ➩ Sweetness Level: " << dessertsMenu->getDessertsMenuItem(i)->howSweet() << "\n" << "\n";
 	}
 		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }

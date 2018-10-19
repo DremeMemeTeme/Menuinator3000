@@ -23,8 +23,8 @@ extern bool displayInputError(string input, int maxNumOptions);
 //extern displayMenu functions here
 extern void displayOptions();
 extern void displayMain(mainsmenu * mainsMenu);
-extern void displayDrinks(drinkmenu drinkMenu);
-extern void displayDessert(dessertsmenu dessertsMenu);
+extern void displayDrinks(drinkmenu * drinkMenu);
+extern void displayDessert(dessertsmenu * dessertsMenu);
 extern bool quitCondition(string input);
 
 
@@ -57,15 +57,15 @@ int main()
 	mainsMenu.addDish(pasta);
 	//--------------------
 
-
-	
 	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
+	dessertsmenu * dessertMenuPtr = &dessertsMenu;
 	//--------------------
 	dessertsMenu.addDish(choc_cake);
 	dessertsMenu.addDish(citrus_tart);
 	//--------------------
 
 	drinkmenu drinkMenu = drinkmenu("Drinks Menu", 15);
+	drinkmenu * drinkMenu = &drinkMenu;
 	//--------------------
 	drinkMenu.addDish(white);
 	drinkMenu.addDish(red);
