@@ -219,8 +219,10 @@ int main()
 					}
 
 					if (input == "y" || input == "Y") {
+						cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 						cout << "Thank you for using the Menu-inator 3000!\n";
 						cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+						cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 						delete[] orderArray;
 						delete[] dishSizes;
 						return 0;
@@ -405,8 +407,10 @@ int main()
 							}
 
 							if (input == "y" || input == "Y") {
+								cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 								cout << "Thank you for using the Menu-inator 3000!\n";
 								cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+								cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 								delete[] orderArray;
 								delete[] dishSizes;
 								return 0;
@@ -523,8 +527,10 @@ int main()
 										}
 
 										if (input == "y" || input == "Y") {
+											cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 											cout << "Thank you for using the Menu-inator 3000!\n";
 											cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+											cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 											delete[] orderArray;
 											delete[] dishSizes;
 											return 0;
@@ -714,8 +720,10 @@ int main()
 						}
 
 						if (input == "y" || input == "Y") {
+							cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 							cout << "Thank you for using the Menu-inator 3000!\n";
 							cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+							cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 							return 0;
 						}
 
@@ -825,8 +833,10 @@ int main()
 									}
 
 									if (input == "y" || input == "Y") {
+										cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 										cout << "Thank you for using the Menu-inator 3000!\n";
 										cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+										cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 										return 0;
 									}
 
@@ -929,28 +939,6 @@ int main()
 					inputError = displayInputError(dishNum, dessertsMenu.getDishCount());
 				}
 
-				/* //dont think these are needed here since theres no sizes and the display menu
-				already shows the allergy info and sweetnes info
-
-				//asking whether they would like entree or main:
-				size = "0";
-				cout << "Please enter the number corresponding to the size you would like to order:\n";
-				cout << "(1) Glass\n" << "(2) Bottle\n";
-				cin >> size;
-				if (quitCondition(size) == true) {
-					//display goodbye message function? or include this in quitCondition function?
-					return 0;
-				}
-	
-				while (size[0] - '0' < 1 || size[0] - '0' > 2) {
-					cout << "That is not a valid number! Please enter either 1 or 2: ";
-					cin >> size;
-					if (quitCondition(size) == true) {
-						//display goodbye message function? or include this in quitCondition function?
-						return 0;
-					}
-				} */
-
 				dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
 				addedDessert = dessertsMenu.getDessertsMenuItem(dishIndex);
 				addDessert(orderArray, currentDishesPtr, addedDessert, &totalCost, dishSizes);
@@ -1019,8 +1007,10 @@ int main()
 						}
 
 						if (input == "y" || input == "Y") {
+							cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 							cout << "Thank you for using the Menu-inator 3000!\n";
 							cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+							cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 							return 0;
 						}
 
@@ -1130,8 +1120,10 @@ int main()
 									}
 
 									if (input == "y" || input == "Y") {
+										cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";     
 										cout << "Thank you for using the Menu-inator 3000!\n";
 										cout << "Your order has been processed. Please collect your order and pay in-store.\n";
+										cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇"<< "\n";
 										return 0;
 									}
 
