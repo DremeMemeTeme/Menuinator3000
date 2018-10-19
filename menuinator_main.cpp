@@ -58,14 +58,14 @@ int main()
 	//--------------------
 
 	dessertsmenu dessertsMenu = dessertsmenu("Dessert Menu", 15);
-	dessertsmenu * dessertMenuPtr = &dessertsMenu;
+	dessertsmenu * dessertsMenuPtr = &dessertsMenu;
 	//--------------------
 	dessertsMenu.addDish(choc_cake);
 	dessertsMenu.addDish(citrus_tart);
 	//--------------------
 
 	drinkmenu drinkMenu = drinkmenu("Drinks Menu", 15);
-	drinkmenu * drinkMenu = &drinkMenu;
+	drinkmenu * drinkMenuPtr = &drinkMenu;
 	//--------------------
 	drinkMenu.addDish(white);
 	drinkMenu.addDish(red);
@@ -141,10 +141,12 @@ int main()
 			menuInput = 1;
 		} 
 		if (input == "2") {
+			displayDrinks(drinkMenuPtr);
 			menuInput = 2;
 		} 
 		if (input == "3") {
 			menuInput = 3;
+			displayDessert(dessertsMenuPtr);
 		} 
 
 		//Bianca doing drink option, Vanessa doing dessert option
@@ -340,7 +342,7 @@ int main()
 					//prompt for next action:
 					cout << "\nWhat would you like to do next?\n";
 					cout << "Please enter a number: \n";
-					cout << "(1) Add dish to order\n";
+					cout << "(1) Add mains dish to order\n";
 					cout << "(2) Look at a different menu\n";
 					cout << "(3) Finalise order\n";
 					cout << "(4) Cancel dish from order\n";
@@ -542,13 +544,13 @@ int main()
 									if (currentDishes == 0) {
 										mainsInput =5;
 										cout << "Please add some dishes to your order first!\n";
-										menuInput = 1; //should hopefully go back to the mains menu options 
+										menuInput = 3; //should hopefully go back to the mains menu options 
 									} else {
 										mainsInput = 5;
 										//cout << "mainsINput: " << mainsInput << "\n";
 										cout << "Here is your current order: \n";
 										displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-										menuInput = 1; //should hopefully go back to the mains menu options
+										menuInput = 3; //should hopefully go back to the mains menu options
 									} 
 								}
 							}
@@ -573,8 +575,7 @@ int main()
 		}
 		while (menuInput == 2) { //drinks menu
 			//display drinks menu function
-			displayDrinks(drinkMenu);
-
+		
 			drinkInput = 0; //resets the loop
 			//prompt for next action:
 			cout << "\nWhat would you like to do next?\n";
@@ -766,10 +767,10 @@ int main()
 							//prompting for next input
 							cout << "\nWhat would you like to do next?\n";
 							cout << "Please enter a number: \n";
-							cout << "(1) Add dish to order\n";
+							cout << "(1) Add drink to order\n";
 							cout << "(2) Look at a different menu\n";
 							cout << "(3) Finalise order\n";
-							cout << "(4) Cancel dish from order\n";
+							cout << "(4) Cancel item from order\n";
 							cout << "(5) Display current order\n";
 							cout << "Type 'quit' at any time to exit the program\n";
 							cin >> input;
@@ -843,13 +844,13 @@ int main()
 								if (currentDishes == 0) {
 									drinkInput =5;
 									cout << "\nPlease add some dishes to your order first!\n";
-									menuInput = 0; //should hopefully go back to the menu options 
+									menuInput = 2; //should hopefully go back to the menu options 
 								} else {
 									drinkInput = 5;
 									//cout << "drinkINput: " << drinkInput << "\n";
 									cout << "\nHere is your current order: \n";
 									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-									menuInput = 0; //should hopefully go back to the menu options
+									menuInput = 2; //should hopefully go back to the menu options
 								}
 							}								
 						}
@@ -859,13 +860,13 @@ int main()
 					if (currentDishes == 0) {
 						drinkInput =5;
 						cout << "\nPlease add some dishes to your order first!\n";
-						menuInput = 0; //should hopefully go back to the menu options 
+						menuInput = 2; //should hopefully go back to the menu options 
 					} else {
 						drinkInput = 5;
 						//cout << "drinkINput: " << drinkInput << "\n";
 						cout << "\nHere is your current order: \n";
 						displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-						menuInput = 0; //should hopefully go back to the menu options
+						menuInput = 2; //should hopefully go back to the menu options
 					}
 				}	
 			}
@@ -875,7 +876,6 @@ int main()
 		{
 			//looping for third option
 			//display desserts option
-			displayDessert(dessertsMenu);
 
 			dessertInput = 0; //resets the loop
 			//prompt for next action:
@@ -1072,10 +1072,10 @@ int main()
 							//prompting for next input
 							cout << "\nWhat would you like to do next?\n";
 							cout << "Please enter a number: \n";
-							cout << "(1) Add dish to order\n";
+							cout << "(1) Add dessert to order\n";
 							cout << "(2) Look at a different menu\n";
 							cout << "(3) Finalise order\n";
-							cout << "(4) Cancel dish from order\n";
+							cout << "(4) Cancel item from order\n";
 							cout << "(5) Display current order\n";
 							cout << "Type 'quit' at any time to exit the program\n";
 							cin >> input;
@@ -1149,13 +1149,13 @@ int main()
 								if (currentDishes == 0) {
 									dessertInput =5;
 									cout << "\nPlease add some dishes to your order first!\n";
-									menuInput = 0; //should hopefully go back to the menu options 
+									menuInput = 3; //should hopefully go back to the menu options 
 								} else {
 									dessertInput = 5;
 									//cout << "dessertINput: " << dessertInput << "\n";
 									cout << "\nHere is your current order: \n";
 									displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-									menuInput = 0; //should hopefully go back to the menu options
+									menuInput = 3; //should hopefully go back to the menu options
 								}
 							}								
 						}
@@ -1165,13 +1165,13 @@ int main()
 					if (currentDishes == 0) {
 						dessertInput =5;
 						cout << "\nPlease add some dishes to your order first!\n";
-						menuInput = 0; //should hopefully go back to the menu options 
+						menuInput = 3; //should hopefully go back to the menu options 
 					} else {
 						dessertInput = 5;
 						//cout << "dessertINput: " << dessertInput << "\n";
 						cout << "\nHere is your current order: \n";
 						displayCurrentOrder(orderArray, currentDishes, totalCost, dishSizes);
-						menuInput = 0; //should hopefully go back to the menu options
+						menuInput = 3; //should hopefully go back to the menu options
 					}
 				}	
 			}

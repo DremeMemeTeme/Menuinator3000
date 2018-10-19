@@ -54,9 +54,9 @@ void displayMain(mainsmenu * mainsMenu)
 void displayDrinks(drinkmenu * drinkMenu)
 {
 	cout << "\n" << "〖 ━━  HERE IS OUR DRINKS MENU ━━ 〗:" << "\n";
-	for(int i=0; i<drinkMenu.getDishCount(); i++)
+	for(int i=0; i<drinkMenu->getDishCount(); i++)
 	{
-		cout << "(" << i+1 << ")" << drinkMenu.getDrinkMenuItem(i)->getName() << 
+		cout << "(" << i+1 << ")" << drinkMenu->getDrinkMenuItem(i)->getName() << 
 		".....(G)$" << drinkMenu->getDrinkMenuItem(i)->getPrice() << 
 		".....(B)$" << drinkMenu->getDrinkMenuItem(i)->getDiffPrice() << "\n";
 
@@ -70,7 +70,7 @@ void displayDrinks(drinkmenu * drinkMenu)
 void displayDessert(dessertsmenu * dessertsMenu)
 {
 	cout << "\n" << "〖 ━━  HERE IS OUR DESSERTS MENU ━━ 〗:" << "\n";
-	for(int i=0; i<dessertsMenu.getDishCount(); i++)
+	for(int i=0; i<dessertsMenu->getDishCount(); i++)
 	{
 		cout << "(" << i+1 << ")" << dessertsMenu->getDessertsMenuItem(i)->getName() << 
 		".....$" << dessertsMenu->getDessertsMenuItem(i)->getPrice() << "\n";
