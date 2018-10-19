@@ -40,11 +40,16 @@ void displayMain(mainsmenu * mainsMenu)
 		 ".....(M)$" << mainsMenu->getMainsMenuItem(i)->getPrice() << 
 		 ".....(E)$" << mainsMenu->getMainsMenuItem(i)->getDiffPrice() << "\n";
 		 cout <<  "   ➩ Contains: " << mainsMenu->getMainsMenuItem(i)->getInfo() << "\n" << "\n";
+
+		 cout << "   ➩ This Dish is " << mainsMenu->getMainsMenuItem(i)->isSpicy() << "\n";
 	}	
 
 	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
 
+
+
+/*
 //DISPLAYS DRINKS MENU
 void displayDrinks(drinkmenu * drinkMenu)
 {
@@ -75,7 +80,8 @@ void displayDessert(dessertsmenu * dessertsMenu)
 	}
 		cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
 }
-/*
+*/
+
 int main(){
 
 	mains spag = mains("Spaghetti", 18.90, "gluten", 15.9, false);
@@ -115,7 +121,7 @@ int main(){
 	//--------------------
 
 	displayOptions();
-
+/*
 	int userInput;
 
 	cin >> userInput;
@@ -130,12 +136,29 @@ int main(){
 	if(userInput == 3){
 		displayDessert(dessertsMenu);
 	}
+	*/
+/*
 
+	cout << "\n" << "〖 ━━  HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
+		
+	for(int i = 0; i<mainsMenu.getDishCount(); i++)
+	{
+		cout << "(" << i+1 << ")" << mainsMenu.getMainsMenuItem(i)->getName() <<
+		 ".....(M)$" << mainsMenu.getMainsMenuItem(i)->getPrice() << 
+		 ".....(E)$" << mainsMenu.getMainsMenuItem(i)->getDiffPrice() << "\n";
+		 cout <<  "   ➩ Contains: " << mainsMenu.getMainsMenuItem(i)->getInfo() << "\n";
+
+		 cout << "   ➩ This Dish is " << mainsMenu.getMainsMenuItem(i)->isSpicy() << "\n" <<" \n";
+	}	
+
+	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
+
+*/
 	
 	//delete[] mainsArray;
 	return 0;
 }
-*/
+
 
 /* -------------------------------------------------------------
 
