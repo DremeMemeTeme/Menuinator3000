@@ -101,7 +101,7 @@ int main()
 
 	cout << "Welcome to the Menuinator 3000!\n";
 
-	cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
+	//cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
 
 	while (exitCondition != 0) { //may or may not work having this loop
 		/*
@@ -135,9 +135,9 @@ int main()
 
 		menuInput = 0; 
 		if (input == "1") {
-			cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
+			//cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
 			displayMain(mainsMenuPtr); //put it here so that menu only displays once
-			cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
+			//cout << "expected first dish in menu array: " << mainsMenu.getMainsMenuItem(0)->getName() << "\n";
 			menuInput = 1;
 		} 
 		if (input == "2") {
@@ -333,8 +333,8 @@ int main()
 					dishIndex = (dishNum[0] - '0') - 1; //since indexing starts from 0. Also converting from string to int
 
 					addedMains = mainsMenu.getMainsMenuItem(dishIndex);
-					cout << "dish index: " << dishIndex << "\n";
-					cout << "Added mains: " << addedMains->getName() << "\n";
+					//cout << "dish index: " << dishIndex << "\n";
+					//cout << "Added mains: " << addedMains->getName() << "\n";
 					addMains(orderArray, currentDishesPtr, addedMains, &totalCost, size, dishSizes);
 
 					//prompt for next action:
