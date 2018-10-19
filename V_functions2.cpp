@@ -35,13 +35,19 @@ void displayMain(mainsmenu * mainsMenu)
 	cout << "\n" << "〖 ━━  HERE IS OUR MAINS MENU ━━ 〗:" << "\n";
 		
 	for(int i = 0; i<mainsMenu->getDishCount(); i++)
-	{
+	{ 
 		cout << "(" << i+1 << ")" << mainsMenu->getMainsMenuItem(i)->getName() <<
 		 ".....(M)$" << mainsMenu->getMainsMenuItem(i)->getPrice() << 
 		 ".....(E)$" << mainsMenu->getMainsMenuItem(i)->getDiffPrice() << "\n";
-		 cout <<  "   ➩ Contains: " << mainsMenu->getMainsMenuItem(i)->getInfo() << "\n" << "\n";
+		 cout <<  "   ➩ Contains: " << mainsMenu->getMainsMenuItem(i)->getInfo() << "\n";
 
-		 cout << "   ➩ This Dish is " << mainsMenu->getMainsMenuItem(i)->isSpicy() << "\n";
+		 if(mainsMenu->getMainsMenuItem(i)->isSpicy() != 0){
+		 	cout << "   ➩ Dish is Spicy" << "\n" << "\n";
+		 }
+
+		 if(mainsMenu->getMainsMenuItem(i)->isSpicy() == 0){
+		 	cout << "   ➩ Dish is not Spicy" << "\n" << "\n";
+		 }
 	}	
 
 	cout << " ◇────◇────◇────◇────◇────◇────◇────◇────◇────◇────◇" << "\n";
@@ -100,6 +106,7 @@ int main(){
 
 	//creating & intitializing menus
 	mainsmenu mainsMenu = mainsmenu("Mains Menu", 20);
+	mainsmenu * mainsMenuPtr = &mainsMenu;
 	//--------------------
 	mainsMenu.addDish(spag);
 	mainsMenu.addDish(sandwich);
@@ -121,14 +128,16 @@ int main(){
 	//--------------------
 
 	displayOptions();
-/*
+
 	int userInput;
 
 	cin >> userInput;
 
 	if(userInput == 1){
-		displayMain(mainsMenu);
+		displayMain(mainsMenuPtr);
 	}
+
+	/*
 
 	if(userInput == 2){
 		displayDrinks(drinkMenu);
